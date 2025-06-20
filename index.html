@@ -8,11 +8,60 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector('nav');
+      nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+ <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("form");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const json = JSON.stringify(Object.fromEntries(formData.entries()));
+
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          body: json
+        })
+          .then(async (response) => {
+            const data = await response.json();
+            if (response.status === 200) {
+              alert("✅ Message sent successfully!");
+            } else {
+              alert(`❌ Error: ${data.message}`);
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+            alert("⚠️ Something went wrong. Please try again later.");
+          })
+          .finally(() => {
+            form.reset();
+          });
+      });
+    });
+  </script>
+
+
 </head>
 <body>
   <header>
     <h1 class="typing">Abhishek Shetty</h1>
+
     <p>Web Developer | Software Engineer | Data Analyst</p>
+    <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">
+  &#8942;
+</div>
+
     <nav>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
@@ -27,8 +76,9 @@
       <img src="p.jpg" alt="Abhishek Shetty">
       <p>I am passionate about web development, software engineering, and data analysis. I enjoy building interactive websites, developing efficient software solutions, and uncovering insights from data. My technical skills include Python, JavaScript, Java, C, ReactJS, Tailwind CSS, C++, HTML, CSS, and SQL.</p>
     </div>
-    <h3 class="subheading">Skills</h3>
-    <div class="skills">
+    <h3>Skills</h3>
+    <div class="skills" style="justify-content: center;">
+
       <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/python.svg" alt="Python">
       <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/javascript.svg" alt="JavaScript">
       <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/java.svg" alt="Java">
@@ -58,12 +108,13 @@
 
   <section id="education">
     <h2>Education</h2>
-    <ul>
+    <ul class="education-box">
+
       <li><strong>BCA</strong> – Mahatma Gandhi Memorial College, Udupi <br>Completed 2023 | First Class</li>
       <li><strong>MCA</strong> – Manipal Institute of Technology, Manipal <br>Ongoing (Expected 2026)</li>
       <li><strong>Certifications</strong>
         <ul>
-          <li>Full Stack Web Development – Udemy</li>
+          <li>Power BI – Coursera</li>
           <li>Data Science with Python – Coursera</li>
         </ul>
       </li>
@@ -72,12 +123,22 @@
 
   <section id="contact">
     <h2>Contact</h2>
-    <form action="contact.php" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+    <form  id="form" method="POST">
+  <input type="hidden" name="access_key" value="861ac1d9-b2f0-44a8-8434-d5ee4d70908a" />
+
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" placeholder="Enter your name" required />
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+  <label for="message">Message</label>
+  <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+
+  <button type="submit">Submit</button>
+</form>
+
+
 
     <div class="social-icons">
       <a href="mailto:aabhishekshetty7@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
