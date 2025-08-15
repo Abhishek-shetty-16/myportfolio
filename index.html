@@ -1,156 +1,367 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Abhishek Shetty - Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <script>
-    function toggleMenu() {
-      const nav = document.querySelector('nav');
-      nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
-    }
-  </script>
- <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const form = document.getElementById("form");
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const formData = new FormData(form);
-        const json = JSON.stringify(Object.fromEntries(formData.entries()));
-
-        fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-          },
-          body: json
-        })
-          .then(async (response) => {
-            const data = await response.json();
-            if (response.status === 200) {
-              alert("✅ Message sent successfully!");
-            } else {
-              alert(`❌ Error: ${data.message}`);
-            }
-          })
-          .catch((error) => {
-            console.error(error);
-            alert("⚠️ Something went wrong. Please try again later.");
-          })
-          .finally(() => {
-            form.reset();
-          });
-      });
-    });
-  </script>
-
-
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
+
+  <!-- YouTube-style Loader -->
+  <div id="loader">
+    <div class="logo-animation">
+      <span class="loader-letter">A</span>
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- Animated Waves (TOP) -->
+  <div class="wave wave-top" aria-hidden="true">
+    <svg viewBox="0 0 1440 160" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="gradTop" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#E8D9FF"/>
+          <stop offset="100%" stop-color="#FFCFE8"/>
+        </linearGradient>
+      </defs>
+      <!-- 3 layered waves for depth -->
+      <path class="wave-fill wave-1" d="M0,60 C240,120 480,0 720,60 C960,120 1200,20 1440,70 L1440,0 L0,0 Z" fill="url(#gradTop)"/>
+      <path class="wave-fill wave-2" d="M0,80 C240,140 480,20 720,80 C960,140 1200,40 1440,90 L1440,0 L0,0 Z" fill="url(#gradTop)"/>
+      <path class="wave-fill wave-3" d="M0,100 C240,160 480,40 720,100 C960,160 1200,60 1440,110 L1440,0 L0,0 Z" fill="url(#gradTop)"/>
+    </svg>
+  </div>
+
   <header>
-    <h1 class="typing">Abhishek Shetty</h1>
+    <!-- Sidebar toggle (Mobile) -->
+    <button class="menu-toggle" onclick="openSidebar()" aria-label="Open menu">
+      <i class="fas fa-bars"></i>
+    </button>
 
-    <p>Web Developer | Software Engineer | Data Analyst</p>
-    <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">
-  &#8942;
-</div>
+    <div class="header-text">
+      <h1 class="intro-name">Abhishek Shetty</h1>
+      <p class="intro-subtitle">Web Developer | Software Engineer | Data Analyst</p>
+    </div>
 
-    <nav>
+    <!-- Desktop Navbar -->
+    <nav class="desktop-nav">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#education">Education</a>
+      <a href="#internship">Internship</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <div class="about-container">
-      <img src="p.jpg" alt="Abhishek Shetty">
-      <p>I am passionate about web development, software engineering, and data analysis. I enjoy building interactive websites, developing efficient software solutions, and uncovering insights from data. My technical skills include Python, JavaScript, Java, C, ReactJS, Tailwind CSS, C++, HTML, CSS, and SQL.</p>
-    </div>
-    <h3>Skills</h3>
-    <div class="skills" style="justify-content: center;">
+  <!-- Sidebar (Mobile) -->
+  <aside id="sidebar" class="sidebar" aria-hidden="true">
+    <button class="close-sidebar" onclick="closeSidebar()" aria-label="Close menu">&times;</button>
+    <a href="#about" onclick="closeSidebar()">About</a>
+    <a href="#projects" onclick="closeSidebar()">Projects</a>
+    <a href="#education" onclick="closeSidebar()">Education</a>
+    <a href="#internship" onclick="closeSidebar()">Internship</a>
+    <a href="#contact" onclick="closeSidebar()">Contact</a>
+  </aside>
 
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/python.svg" alt="Python">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/javascript.svg" alt="JavaScript">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/java.svg" alt="Java">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/c.svg" alt="C">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/react.svg" alt="ReactJS">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/tailwindcss.svg" alt="Tailwind CSS">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/cplusplus.svg" alt="C++">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/html5.svg" alt="HTML">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/css3.svg" alt="CSS">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/mysql.svg" alt="MySQL">
-    </div>
-  </section>
+  <main>
+    <section id="about">
+  <h2>About Me</h2>
+  <div class="about-container">
+    <img src="p.jpg" alt="Abhishek Shetty">
+    <p>
+      I am a passionate and detail-oriented developer with experience in **web development, software engineering, and data analysis**.  
+      My work focuses on creating **functional, aesthetic, and performance-driven solutions** that solve real-world problems.  
+      <br><br>
+      I have a strong background in **Python, JavaScript, Java, C, and C++**, and I enjoy working with **modern frameworks like ReactJS, Tailwind CSS, and FastAPI**.  
+      I’m also skilled in **database design and optimization** with MySQL and PostgreSQL.  
+      <br><br>
+      Beyond coding, I’m deeply interested in **UI/UX design**, **data visualization**, and **automation tools** that simplify workflows.  
+      I enjoy collaborating with teams, mentoring juniors, and experimenting with new tech to stay ahead in the industry.
+    </p>
+  </div>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="project">
-        <h3>Gym Management System</h3>
-        <p>A comprehensive web-based system managing gym memberships, schedules, and payments using HTML, CSS, JS, and PHP.</p>
+  <h3>Skills</h3>
+  <div class="skills">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/python.svg" alt="Python">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/javascript.svg" alt="JavaScript">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/java.svg" alt="Java">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/c.svg" alt="C">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/react.svg" alt="ReactJS">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/tailwindcss.svg" alt="Tailwind CSS">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/cplusplus.svg" alt="C++">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/html5.svg" alt="HTML">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/css3.svg" alt="CSS">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/mysql.svg" alt="MySQL">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/postgresql.svg" alt="PostgreSQL">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/fastapi.svg" alt="FastAPI">
+  </div>
+</section>
+
+
+   <section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+
+    <!-- Mental Health Companion (Internship) -->
+    <div class="project">
+      <h3>Mental Health Companion (Internship Project)</h3>
+      <p>
+        A full-stack platform to connect patients with therapists and support ongoing mental wellness.
+      </p>
+      <ul>
+        <li>🔐 <strong>JWT role-based auth</strong>: Admin, Super Admin, Therapist, Patient</li>
+        <li>📩 <strong>OTP onboarding</strong> for new therapists</li>
+        <li>📅 <strong>Appointments</strong>: book, reschedule/cancel with availability management</li>
+        <li>💬 <strong>Real-time chat</strong> between patient & therapist</li>
+        <li>⏰ <strong>Reminders</strong> for guided mental-health exercises</li>
+        <li>📝 <strong>Blogs & Journals</strong>: everyone can write/read</li>
+        <li>📍 <strong>Find therapists</strong> by location + filters (specialty, experience, language)</li>
+      </ul>
+      <p><em>Stack:</em> Figma (UI), React.js (frontend), Python FastAPI (API), PostgreSQL (DB), JWT.</p>
+    </div>
+
+    <!-- Gym Management System -->
+    <div class="project">
+      <h3>Gym Management System</h3>
+      <p>
+        A feature-rich platform to manage gym operations efficiently.
+      </p>
+      <ul>
+        <li>👤 Simple user login for members</li>
+        <li>🛠 <strong>Admin dashboard</strong> to monitor members, trainers & plans</li>
+        <li>📅 <strong>Trainer appointments</strong> with time-slot booking</li>
+        <li>🏋️‍♂️ <strong>Exercise categories</strong> with descriptions & images</li>
+        <li>💳 <strong>Dummy payment</strong> flow for membership subscriptions</li>
+      </ul>
+      <p><em>Stack:</em> HTML, CSS, JavaScript, PHP, MySQL.</p>
+    </div>
+
+    <!-- Hospital Management System -->
+    <div class="project">
+      <h3>Hospital Management System</h3>
+      <p>
+        A web app to make hospital services organized and accessible.
+      </p>
+      <ul>
+        <li>🔐 Patient login & profile</li>
+        <li>🗓 <strong>Appointment booking</strong> with doctors</li>
+        <li>🩸 <strong>Blood donation</strong> registration</li>
+        <li>💚 <strong>Organ donation</strong> registration & eligibility capture</li>
+        <li>📂 Patient records & appointment history</li>
+      </ul>
+      <p><em>Stack:</em> PHP, JavaScript, MySQL.</p>
+    </div>
+
+    <!-- Book Management System -->
+    <div class="project">
+      <h3>Book Management System</h3>
+      <p>
+        A user-friendly app to manage a personal book library (simple user login).
+      </p>
+      <ul>
+        <li>📚 Add, edit, delete books</li>
+        <li>🔍 Search & filter by author, genre, status</li>
+        <li>🗄 PostgreSQL persistence with clean schema</li>
+        <li>🎨 Responsive UI with Tailwind CSS</li>
+      </ul>
+      <p><em>Stack:</em> Python FastAPI, HTML, Tailwind CSS, PostgreSQL.</p>
+    </div>
+
+  </div>
+</section>
+
+
+    <section id="education">
+      <h2>Education</h2>
+      <ul class="education-box">
+        <li><strong>BCA</strong> – Mahatma Gandhi Memorial College, Udupi <br>Completed 2023 | First Class</li>
+        <li><strong>MCA</strong> – Manipal Institute of Technology, Manipal <br>Ongoing (Expected 2026)</li>
+        <li><strong>Certifications</strong>
+          <ul>
+            <li>Power BI – Coursera</li>
+            <li>Data Science with Python – Coursera</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="internship">
+      <h2>Internship</h2>
+      <div class="projects">
+        <div class="project">
+          <h3>Software Engineer Intern – Optimum Codes</h3>
+          <p>
+            Completed a 2-month internship from June 02, 2025 to August 02, 2025.  
+            Worked on PostgreSQL for databases, Python FastAPI for API endpoints,  
+            and React.js + Tailwind CSS for frontend, with UI design in Figma.
+          </p>
+          <button class="view-cert-btn" onclick="openModal()">View Certificate</button>
+        </div>
       </div>
-      <div class="project">
-        <h3>Hospital Management System</h3>
-        <p>A hospital interface managing patient records, doctor appointments, and billing functionalities using PHP and JS.</p>
+    </section>
+
+   <section id="contact">
+  <h2>Contact</h2>
+
+  <form method="POST" id="form">
+    <!-- Web3Forms Access Key -->
+    <input type="hidden" name="access_key" value="861ac1d9-b2f0-44a8-8434-d5ee4d70908a">
+
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" placeholder="Write your message here..." rows="5" required></textarea>
+
+    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+    <button type="submit">Submit Form</button>
+
+    <div id="result"></div>
+  </form>
+
+  <div class="social-icons">
+    <a href="mailto:aabhishekshetty7@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+    <a href="https://github.com/Abhishek-shetty-16" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.linkedin.com/in/abhishek-shetty-0a58382a3/" target="_blank"><i class="fab fa-linkedin"></i></a>
+  </div>
+</section>
+
+<script>
+const form = document.getElementById('form');
+const result = document.getElementById('result');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const formData = new FormData(form);
+  const object = Object.fromEntries(formData);
+  const json = JSON.stringify(object);
+
+  result.style.display = "block";
+  result.innerHTML = "Please wait...";
+
+  fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+      },
+      body: json
+  })
+  .then(async (response) => {
+      let json = await response.json();
+      if (response.status == 200) {
+          result.style.color = "green";
+          result.innerHTML = "✅ Form submitted successfully!";
+      } else {
+          result.style.color = "red";
+          result.innerHTML = json.message;
+      }
+  })
+  .catch(error => {
+      result.style.color = "red";
+      result.innerHTML = "❌ Something went wrong!";
+  })
+  .then(() => {
+      form.reset();
+      setTimeout(() => {
+          result.style.display = "none";
+      }, 3000);
+  });
+});
+</script>
+
+
+  </main>
+
+  <!-- Certificate Modal -->
+  <div id="certificateModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()" aria-label="Close certificate">&times;</button>
+      <div id="previewView">
+        <img src="completionLetter_preview.jpg" alt="Certificate Preview" class="cert-preview">
+        <button class="pdf-btn" onclick="showPDF()">View Full PDF</button>
+      </div>
+      <div id="pdfView" style="display:none;">
+        <iframe src="completionLetter_Abishek.pdf" width="100%" height="500px" title="Internship Certificate PDF"></iframe>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section id="education">
-    <h2>Education</h2>
-    <ul class="education-box">
-
-      <li><strong>BCA</strong> – Mahatma Gandhi Memorial College, Udupi <br>Completed 2023 | First Class</li>
-      <li><strong>MCA</strong> – Manipal Institute of Technology, Manipal <br>Ongoing (Expected 2026)</li>
-      <li><strong>Certifications</strong>
-        <ul>
-          <li>Power BI – Coursera</li>
-          <li>Data Science with Python – Coursera</li>
-        </ul>
-      </li>
-    </ul>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <form  id="form" method="POST">
-  <input type="hidden" name="access_key" value="861ac1d9-b2f0-44a8-8434-d5ee4d70908a" />
-
-  <label for="name">Name</label>
-  <input type="text" id="name" name="name" placeholder="Enter your name" required />
-
-  <label for="email">Email</label>
-  <input type="email" id="email" name="email" placeholder="Enter your email" required />
-
-  <label for="message">Message</label>
-  <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
-
-  <button type="submit">Submit</button>
-</form>
-
-
-
-    <div class="social-icons">
-      <a href="mailto:aabhishekshetty7@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
-      <a href="https://github.com/Abhishek-shetty-16" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.linkedin.com/in/abhishek-shetty-0a58382a3/" target="_blank"><i class="fab fa-linkedin"></i></a>
-    </div>
-  </section>
+  <!-- Animated Waves (BOTTOM) -->
+  <div class="wave wave-bottom" aria-hidden="true">
+    <svg viewBox="0 0 1440 180" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="gradBottom" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#B3E5FC"/>
+          <stop offset="100%" stop-color="#A5F3FC"/>
+        </linearGradient>
+      </defs>
+      <path class="wave-fill wave-1" d="M0,120 C240,180 480,60 720,120 C960,180 1200,80 1440,130 L1440,180 L0,180 Z" fill="url(#gradBottom)"/>
+      <path class="wave-fill wave-2" d="M0,140 C240,200 480,80 720,140 C960,200 1200,100 1440,150 L1440,180 L0,180 Z" fill="url(#gradBottom)"/>
+      <path class="wave-fill wave-3" d="M0,160 C240,220 480,100 720,160 C960,220 1200,120 1440,170 L1440,180 L0,180 Z" fill="url(#gradBottom)"/>
+    </svg>
+  </div>
 
   <footer>
     <p>&copy; 2025 Abhishek Shetty. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Sidebar
+    function openSidebar() {
+      const el = document.getElementById("sidebar");
+      el.style.width = "260px";
+      el.setAttribute("aria-hidden", "false");
+    }
+    function closeSidebar() {
+      const el = document.getElementById("sidebar");
+      el.style.width = "0";
+      el.setAttribute("aria-hidden", "true");
+    }
+
+    // Certificate Modal
+    function openModal() {
+      document.getElementById("certificateModal").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("certificateModal").style.display = "none";
+      document.getElementById("previewView").style.display = "block";
+      document.getElementById("pdfView").style.display = "none";
+    }
+    function showPDF() {
+      document.getElementById("previewView").style.display = "none";
+      document.getElementById("pdfView").style.display = "block";
+    }
+
+    // Loader → reveal header animation
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        const loader = document.getElementById("loader");
+        loader.style.opacity = "0";
+        loader.style.transition = "opacity 0.6s ease";
+        setTimeout(() => {
+          loader.style.display = "none";
+          document.querySelector(".intro-name").classList.add("name-animate");
+          document.querySelector(".intro-subtitle").classList.add("subtitle-animate");
+        }, 600);
+      }, 2000);
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("fade-in");
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll("section").forEach((sec) => observer.observe(sec));
+  </script>
 </body>
 </html>
