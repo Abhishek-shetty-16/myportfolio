@@ -4,463 +4,716 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Abhishek Shetty - Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-</head>
 
+  <!-- Bootstrap 5 + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
 <body>
 
-  <!-- Loader -->
-<div id="loader">
-  <span class="signature-logo">Abhishek Shetty</span>
-</div>
+  <!-- ===== GAMER BACKGROUND CANVAS ===== -->
+  <canvas id="bgCanvas"></canvas>
 
-
-  <!-- Animated Waves (TOP) -->
-  <div class="wave wave-top" aria-hidden="true">
-    <svg viewBox="0 0 1440 160" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="gradTop" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#E8D9FF"/>
-          <stop offset="100%" stop-color="#FFCFE8"/>
-        </linearGradient>
-      </defs>
-      <!-- 3 layered waves for depth -->
-      <path class="wave-fill wave-1" d="M0,60 C240,120 480,0 720,60 C960,120 1200,20 1440,70 L1440,0 L0,0 Z" fill="url(#gradTop)"/>
-      <path class="wave-fill wave-2" d="M0,80 C240,140 480,20 720,80 C960,140 1200,40 1440,90 L1440,0 L0,0 Z" fill="url(#gradTop)"/>
-      <path class="wave-fill wave-3" d="M0,100 C240,160 480,40 720,100 C960,160 1200,60 1440,110 L1440,0 L0,0 Z" fill="url(#gradTop)"/>
-    </svg>
-  </div>
-
-  <header>
-    <!-- Sidebar toggle (Mobile) -->
-    <button class="menu-toggle" onclick="openSidebar()" aria-label="Open menu">
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <div class="header-text">
-      <h1 class="intro-name">Abhishek Shetty</h1>
-      <p class="intro-subtitle">Web Developer | Software Engineer | Data Analyst</p>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Abhishek Shetty</a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#internship">Internship</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <!-- Desktop Navbar -->
-    <nav class="desktop-nav">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a href="#internship">Internship</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <!-- Sidebar (Mobile) -->
-  <aside id="sidebar" class="sidebar" aria-hidden="true">
-    <button class="close-sidebar" onclick="closeSidebar()" aria-label="Close menu">&times;</button>
-    <a href="#about" onclick="closeSidebar()">About</a>
-    <a href="#projects" onclick="closeSidebar()">Projects</a>
-    <a href="#education" onclick="closeSidebar()">Education</a>
-    <a href="#internship" onclick="closeSidebar()">Internship</a>
-    <a href="#contact" onclick="closeSidebar()">Contact</a>
-  </aside>
-
-  <main>
-    <section id="about">
-  <h2>About Me</h2>
-  <div class="about-container">
-    <img src="p.jpg" alt="Abhishek Shetty">
-    <p>
-      I am a passionate and detail-oriented developer with experience in <b>web development, software engineering, and data analysis</b>.  
-      My work focuses on creating <b>functional, aesthetic, and performance-driven solutions</b> that solve real-world problems.  
-      <br><br>
-      I have a strong background in <b>Python, JavaScript, Java, C, and C++</b>, and I enjoy working with **modern frameworks like ReactJS, Tailwind CSS, and FastAPI**.  
-      I’m also skilled in <b>database design and optimization</b> with MySQL and PostgreSQL.  
-      <br><br>
-      Beyond coding, I’m deeply interested in <b>UI/UX design,data visualization</b>, and <b>version control</b> that simplify workflows.  
-      I enjoy collaborating with teams, mentoring juniors, and experimenting with new tech to stay ahead in the industry.
-    </p>
-  </div>
-
-  <h3>Skills</h3>
-  <div class="skills">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/python.svg" alt="Python">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/javascript.svg" alt="JavaScript">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/java.svg" alt="Java">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/c.svg" alt="C">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/react.svg" alt="ReactJS">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/tailwindcss.svg" alt="Tailwind CSS">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/cplusplus.svg" alt="C++">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/html5.svg" alt="HTML">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/css3.svg" alt="CSS">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/mysql.svg" alt="MySQL">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/postgresql.svg" alt="PostgreSQL">
-    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/fastapi.svg" alt="FastAPI">
-  </div>
-</section>
-
-
-   <section id="projects">
-  <h2>Projects</h2>
-  <div class="projects">
-
-    <!-- Mental Health Companion (Internship) -->
-    <div class="project">
-      <h3>Mental Health Companion (Internship Project)</h3>
-      <p>
-        A full-stack platform to connect patients with therapists and support ongoing mental wellness.
-      </p>
-      <ul>
-        <li>🔐 <strong>JWT role-based auth</strong>: Admin, Super Admin, Therapist, Patient</li>
-        <li>📩 <strong>OTP onboarding</strong> for new therapists</li>
-        <li>📅 <strong>Appointments</strong>: book, reschedule/cancel with availability management</li>
-        <li>💬 <strong>Real-time chat</strong> between patient & therapist</li>
-        <li>⏰ <strong>Reminders</strong> for guided mental-health exercises</li>
-        <li>📝 <strong>Blogs & Journals</strong>: everyone can write/read</li>
-        <li>📍 <strong>Find therapists</strong> by location + filters (specialty, experience, language)</li>
-      </ul>
-      <p><em>Stack:</em> Figma (UI), React.js (frontend), Python FastAPI (API), PostgreSQL (DB), JWT.</p>
-    </div>
-
-    <!-- Gym Management System -->
-    <div class="project">
-      <h3>Gym Management System</h3>
-      <p>
-        A feature-rich platform to manage gym operations efficiently.
-      </p>
-      <ul>
-        <li>👤 Simple user login for members</li>
-        <li>🛠 <strong>Admin dashboard</strong> to monitor members, trainers & plans</li>
-        <li>📅 <strong>Trainer appointments</strong> with time-slot booking</li>
-        <li>🏋️‍♂️ <strong>Exercise categories</strong> with descriptions & images</li>
-        <li>💳 <strong>Dummy payment</strong> flow for membership subscriptions</li>
-      </ul>
-      <p><em>Stack:</em> HTML, CSS, JavaScript, PHP, MySQL.</p>
-    </div>
-
-    <!-- Hospital Management System -->
-    <div class="project">
-      <h3>Hospital Management System</h3>
-      <p>
-        A web app to make hospital services organized and accessible.
-      </p>
-      <ul>
-        <li>🔐 Patient login & profile</li>
-        <li>🗓 <strong>Appointment booking</strong> with doctors</li>
-        <li>🩸 <strong>Blood donation</strong> registration</li>
-        <li>💚 <strong>Organ donation</strong> registration & eligibility capture</li>
-        <li>📂 Patient records & appointment history</li>
-      </ul>
-      <p><em>Stack:</em> PHP, JavaScript, MySQL.</p>
-    </div>
-
-    <!-- Book Management System -->
-    <div class="project">
-      <h3>Book Management System</h3>
-      <p>
-        A user-friendly app to manage a personal book library (simple user login).
-      </p>
-      <ul>
-        <li>📚 Add, edit, delete books</li>
-        <li>🔍 Search & filter by author, genre, status</li>
-        <li>🗄 PostgreSQL persistence with clean schema</li>
-        <li>🎨 Responsive UI with Tailwind CSS</li>
-      </ul>
-      <p><em>Stack:</em> Python FastAPI, HTML, Tailwind CSS, PostgreSQL.</p>
-    </div>
-
-  </div>
-</section>
-
-
-    <!-- Education Section -->
-<section id="education">
-  <h2>Education</h2>
-  <ul class="education-box">
-    <li><strong>BCA</strong> – Mahatma Gandhi Memorial College, Udupi <br>Completed 2024 | CGPA:9.2/10</li>
-    <li><strong>MCA</strong> – Manipal Institute of Technology, Manipal <br>Ongoing (Expected 2026) | Current CGPA:7.32/10</li>
-    <li><strong>Certifications</strong>
-      <ul>
-        <li>Excel Power Tools for Data Analysis – Coursera
-          <button class="view-cert-btn" onclick="openModal('Abhishek_shetty_240970083.pdf')">View Certificate</button>
-        </li>
-        <li>Introduction to Mobile Development – Coursera
-          <button class="view-cert-btn" onclick="openModal('intro to mobile development.pdf')">View Certificate</button>
-        </li>
-        <li>Harnessing the Power of Data with Power BI – Coursera
-          <button class="view-cert-btn" onclick="openModal('power bi2.pdf')">View Certificate</button>
-        </li>
-        <li>Programming for Everybody (Python) – Coursera
-          <button class="view-cert-btn" onclick="openModal('programming for everybody.pdf')">View Certificate</button>
-        </li>
-        <li>Programming with JavaScript – Coursera
-          <button class="view-cert-btn" onclick="openModal('programming with javascript.pdf')">View Certificate</button>
-        </li>
-        <li>Python Data Structures – Coursera
-          <button class="view-cert-btn" onclick="openModal('python data structures.pdf')">View Certificate</button>
-        </li>
-        <li>Capstone: Data with Python – Coursera
-          <button class="view-cert-btn" onclick="openModal('python.pdf')">View Certificate</button>
-        </li>
-        <li>Software Engineer Intern – Blugate Software Technologies Pvt. Ltd.
-          <button class="view-cert-btn" onclick="openBlugateModal()">View Certificate</button>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</section>
-
-<!-- Modal -->
-<div class="modal" id="pdfModal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">✖</span>
-    <iframe id="pdfFrame" src=""></iframe>
-  </div>
-</div>
-
-
-
-    <section id="internship">
-      <h2>Internship</h2>
-      <div class="projects">
-        <div class="project">
-          <h3>Software Engineer Intern – Optimum Codes</h3>
-          <p>
-            Completed a 2-month internship from June 02, 2025 to August 02, 2025.  
-            Worked on PostgreSQL for databases, Python FastAPI for API endpoints,  
-            and React.js + Tailwind CSS for frontend, with UI design in Figma.
-          </p>
-          <button class="view-cert-btn" onclick="openInternshipModal()">View Certificate</button>
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="hero-section d-flex align-items-center">
+    <div class="container text-center text-lg-start">
+      <div class="row align-items-center">
+        <div class="col-lg-5 text-center mb-4 mb-lg-0">
+          <img src="p.jpg" alt="Abhishek Shetty" class="hero-img rounded-circle img-fluid">
         </div>
-
-        <div class="project">
-          <h3>Software Engineer Intern – Blugate Software Technologies Pvt. Ltd.</h3>
-          <p>
-            Successfully completed a 4-month internship from January 02, 2026 to April 30, 2026.  
-            Worked on full-stack web application development using Flask, Django,
-            PostgreSQL, HTML, CSS, JavaScript, and REST APIs. Collaborated
-            with the development team to build scalable applications and gained
-            practical experience in backend development and database management.
+        <div class="col-lg-7">
+          <p class="hero-greeting mb-1">Hello, I'm</p>
+          <h1 class="hero-name mb-2">Abhishek Shetty</h1>
+          <p class="hero-subtitle mb-4">Web Developer &middot; Software Engineer &middot; Data Analyst</p>
+          <p class="hero-desc mb-4">
+            Passionate developer crafting <span class="text-highlight">functional, aesthetic, and performance-driven</span> solutions.
           </p>
-          <button class="view-cert-btn" onclick="openBlugateModal()">View Certificate</button>
+          <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+            <a href="#projects" class="btn btn-primary px-4 py-2 fw-semibold">View Projects</a>
+            <a href="#contact" class="btn btn-outline-light px-4 py-2 fw-semibold">Contact Me</a>
+          </div>
+          <div class="hero-social mt-4 d-flex gap-3 justify-content-center justify-content-lg-start">
+            <a href="mailto:aabhishekshetty7@gmail.com" target="_blank" class="social-link" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+            <a href="https://github.com/Abhishek-shetty-16" target="_blank" class="social-link" aria-label="GitHub"><i class="bi bi-github"></i></a>
+            <a href="https://www.linkedin.com/in/abhishek-shetty-0a58382a3/" target="_blank" class="social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          </div>
         </div>
       </div>
-    </section>
-
-   <section id="contact">
-  <h2>Contact</h2>
-
-  <form method="POST" id="form">
-    <!-- Web3Forms Access Key -->
-    <input type="hidden" name="access_key" value="861ac1d9-b2f0-44a8-8434-d5ee4d70908a">
-
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
-
-    <label for="message">Message</label>
-    <textarea id="message" name="message" placeholder="Write your message here..." rows="5" required></textarea>
-
-    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-    <button type="submit">Submit Form</button>
-
-    <div id="result"></div>
-  </form>
-
-  <div class="social-icons">
-    <a href="mailto:aabhishekshetty7@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
-    <a href="https://github.com/Abhishek-shetty-16" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://www.linkedin.com/in/abhishek-shetty-0a58382a3/" target="_blank"><i class="fab fa-linkedin"></i></a>
-  </div>
-</section>
-
-<script>
-const form = document.getElementById('form');
-const result = document.getElementById('result');
-
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
-  const formData = new FormData(form);
-  const object = Object.fromEntries(formData);
-  const json = JSON.stringify(object);
-
-  result.style.display = "block";
-  result.innerHTML = "Please wait...";
-
-  fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-      },
-      body: json
-  })
-  .then(async (response) => {
-      let json = await response.json();
-      if (response.status == 200) {
-          result.style.color = "green";
-          result.innerHTML = "✅ Form submitted successfully!";
-      } else {
-          result.style.color = "red";
-          result.innerHTML = json.message;
-      }
-  })
-  .catch(error => {
-      result.style.color = "red";
-      result.innerHTML = "❌ Something went wrong!";
-  })
-  .then(() => {
-      form.reset();
-      setTimeout(() => {
-          result.style.display = "none";
-      }, 3000);
-  });
-});
-</script>
-
-
-  </main>
-
-  <!-- Optimum Codes Internship Certificate Modal -->
-<div id="certificateModal" class="modal" aria-hidden="true">
-  <div class="modal-content">
-    <button class="close-btn" onclick="closeInternshipModal()" aria-label="Close certificate">&times;</button>
-    <div id="previewView">
-      <img src="completionLetter_preview.jpg" alt="Certificate Preview" class="cert-preview">
-      <button class="pdf-btn" onclick="showInternshipPDF()">View Full PDF</button>
     </div>
-    <div id="pdfView" style="display:none;">
-      <iframe src="completionLetter_Abishek.pdf" width="100%" height="500px" title="Internship Certificate PDF"></iframe>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section-padding">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">About Me</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="about-card p-4 p-md-5 rounded-4">
+            <p class="mb-4">
+              I am a passionate and detail-oriented developer with experience in <strong>web development, software engineering, and data analysis</strong>.
+              My work focuses on creating <strong>functional, aesthetic, and performance-driven solutions</strong> that solve real-world problems.
+            </p>
+            <p class="mb-4">
+              I have a strong background in <strong>Python, JavaScript, Java, C, and C++</strong>, and I enjoy working with modern frameworks like ReactJS, Tailwind CSS, and FastAPI.
+              I'm also skilled in <strong>database design and optimization</strong> with MySQL and PostgreSQL.
+            </p>
+            <p class="mb-0">
+              Beyond coding, I'm deeply interested in <strong>UI/UX design, data visualization</strong>, and <strong>version control</strong> that simplify workflows.
+              I enjoy collaborating with teams, mentoring juniors, and experimenting with new tech to stay ahead in the industry.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="text-center mt-5 mb-4 fw-bold" style="color: var(--accent);">Skills &amp; Technologies</h3>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="d-flex flex-wrap justify-content-center gap-2">
+            <span class="skill-badge">Python</span>
+            <span class="skill-badge">JavaScript</span>
+            <span class="skill-badge">Java</span>
+            <span class="skill-badge">C</span>
+            <span class="skill-badge">C++</span>
+            <span class="skill-badge">ReactJS</span>
+            <span class="skill-badge">Tailwind CSS</span>
+            <span class="skill-badge">HTML5</span>
+            <span class="skill-badge">CSS3</span>
+            <span class="skill-badge">MySQL</span>
+            <span class="skill-badge">PostgreSQL</span>
+            <span class="skill-badge">FastAPI</span>
+            <span class="skill-badge">Flask</span>
+            <span class="skill-badge">Django</span>
+            <span class="skill-badge">PHP</span>
+            <span class="skill-badge">Figma</span>
+            <span class="skill-badge">Git</span>
+            <span class="skill-badge">Power BI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="section-padding bg-section">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Projects</h2>
+      <div class="row g-4">
+
+        <!-- Mental Health Companion -->
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card h-100 p-4 rounded-4">
+            <div class="project-icon mb-3"><i class="bi bi-heart-pulse-fill"></i></div>
+            <h5 class="fw-bold mb-2">Mental Health Companion</h5>
+            <p class="small mb-3">Full-stack platform connecting patients with therapists.</p>
+            <ul class="project-list small">
+              <li>JWT role-based auth</li>
+              <li>OTP onboarding</li>
+              <li>Appointments &amp; reminders</li>
+              <li>Real-time chat</li>
+              <li>Blogs &amp; journals</li>
+              <li>Find therapists by location</li>
+            </ul>
+            <p class="mt-2 mb-0 small text-muted"><em>Figma, React.js, FastAPI, PostgreSQL</em></p>
+          </div>
+        </div>
+
+        <!-- Gym Management -->
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card h-100 p-4 rounded-4">
+            <div class="project-icon mb-3"><i class="bi bi-dumbbell-fill"></i></div>
+            <h5 class="fw-bold mb-2">Gym Management System</h5>
+            <p class="small mb-3">Platform to manage gym operations efficiently.</p>
+            <ul class="project-list small">
+              <li>User login for members</li>
+              <li>Admin dashboard</li>
+              <li>Trainer appointments</li>
+              <li>Exercise categories</li>
+              <li>Dummy payment flow</li>
+            </ul>
+            <p class="mt-2 mb-0 small text-muted"><em>HTML, CSS, JS, PHP, MySQL</em></p>
+          </div>
+        </div>
+
+        <!-- Hospital Management -->
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card h-100 p-4 rounded-4">
+            <div class="project-icon mb-3"><i class="bi bi-hospital-fill"></i></div>
+            <h5 class="fw-bold mb-2">Hospital Management</h5>
+            <p class="small mb-3">Organized and accessible hospital services.</p>
+            <ul class="project-list small">
+              <li>Patient login &amp; profile</li>
+              <li>Appointment booking</li>
+              <li>Blood donation registration</li>
+              <li>Organ donation registration</li>
+              <li>Patient records &amp; history</li>
+            </ul>
+            <p class="mt-2 mb-0 small text-muted"><em>PHP, JavaScript, MySQL</em></p>
+          </div>
+        </div>
+
+        <!-- Book Management -->
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card h-100 p-4 rounded-4">
+            <div class="project-icon mb-3"><i class="bi bi-book-fill"></i></div>
+            <h5 class="fw-bold mb-2">Book Management System</h5>
+            <p class="small mb-3">Manage a personal book library.</p>
+            <ul class="project-list small">
+              <li>Add, edit, delete books</li>
+              <li>Search &amp; filter by author/genre</li>
+              <li>PostgreSQL persistence</li>
+              <li>Responsive UI</li>
+            </ul>
+            <p class="mt-2 mb-0 small text-muted"><em>FastAPI, HTML, Tailwind CSS, PostgreSQL</em></p>
+          </div>
+        </div>
+
+        <!-- ChitChat Chat Application -->
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card h-100 p-4 rounded-4">
+            <div class="project-icon mb-3"><i class="bi bi-chat-dots-fill"></i></div>
+            <h5 class="fw-bold mb-2">ChitChat Chat Application</h5>
+            <p class="small mb-3">Real-time Android chat app built with Java &amp; Firebase.</p>
+            <ul class="project-list small">
+              <li>User registration &amp; login</li>
+              <li>Real-time messaging</li>
+              <li>Conversation management</li>
+              <li>Firebase Authentication</li>
+              <li>Secure user access</li>
+              <li>Simple, user-friendly interface</li>
+            </ul>
+            <p class="mt-2 mb-0 small text-muted"><em>Java, Firebase, Android SDK</em></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION ===== -->
+  <section id="education" class="section-padding">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Education</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="edu-card p-4 p-md-5 rounded-4 mb-4">
+            <div class="d-flex align-items-start gap-3 mb-4">
+              <div class="edu-icon"><i class="bi bi-mortarboard-fill"></i></div>
+              <div>
+                <h5 class="fw-bold mb-1">BCA – Mahatma Gandhi Memorial College, Udupi</h5>
+                <p class="text-muted mb-0">Completed 2024 &nbsp;|&nbsp; <strong>CGPA: 9.2/10</strong></p>
+              </div>
+            </div>
+            <div class="d-flex align-items-start gap-3">
+              <div class="edu-icon"><i class="bi bi-mortarboard-fill"></i></div>
+              <div>
+                <h5 class="fw-bold mb-1">MCA – Manipal Institute of Technology, Manipal</h5>
+                <p class="text-muted mb-0">Completed 2026 &nbsp;|&nbsp; <strong>CGPA: 7.75/10</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="text-center fw-bold mb-4" style="color: var(--accent);">Certifications</h3>
+          <div class="cert-grid">
+            <div class="cert-item d-flex justify-content-between align-items-center p-3 rounded-3">
+              <span>Excel Power Tools for Data Analysis – Coursera</span>
+              <button class="btn btn-sm btn-outline-accent" onclick="openModal('Abhishek_shetty_240970083.pdf')">View</button>
+            </div>
+            <div class="cert-item d-flex justify-content-between align-items-center p-3 rounded-3">
+              <span>Introduction to Mobile Development – Coursera</span>
+              <button class="btn btn-sm btn-outline-accent" onclick="openModal('intro to mobile development.pdf')">View</button>
+            </div>
+            <div class="cert-item d-flex justify-content-between align-items-center p-3 rounded-3">
+              <span>Harnessing the Power of Data with Power BI – Coursera</span>
+              <button class="btn btn-sm btn-outline-accent" onclick="openModal('power bi2.pdf')">View</button>
+            </div>
+            <div class="cert-item d-flex justify-content-between align-items-center p-3 rounded-3">
+              <span>Programming for Everybody (Python) – Coursera</span>
+              <button class="btn btn-sm btn-outline-accent" onclick="openModal('programming for everybody.pdf')">View</button>
+            </div>
+            <div class="cert-item d-flex justify-content-between align-items-center p-3 rounded-3">
+              <span>Programming with JavaScript – Coursera</span>
+              <button class="btn btn-sm btn-outline-accent" onclick="openModal('programming with javascript.pdf')">View</button>
+            </div>
+            <div class="cert-item d-flex justify-content-between align-items-center p-3 rounded-3">
+              <span>Python Data Structures – Coursera</span>
+              <button class="btn btn-sm btn-outline-accent" onclick="openModal('python data structures.pdf')">View</button>
+            </div>
+            <div class="cert-item d-flex justify-content-between align-items-center p-3 rounded-3">
+              <span>Capstone: Data with Python – Coursera</span>
+              <button class="btn btn-sm btn-outline-accent" onclick="openModal('python.pdf')">View</button>
+            </div>
+            <div class="cert-item d-flex justify-content-between align-items-center p-3 rounded-3">
+              <span>Software Engineer Intern – Blugate Software Technologies</span>
+              <button class="btn btn-sm btn-outline-accent" onclick="openBlugateModal()">View</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INTERNSHIP ===== -->
+  <section id="internship" class="section-padding bg-section">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Internship</h2>
+      <div class="row justify-content-center g-4">
+
+        <div class="col-md-6">
+          <div class="intern-card h-100 p-4 p-md-5 rounded-4">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="intern-icon"><i class="bi bi-building"></i></div>
+              <h5 class="fw-bold mb-0">Software Engineer Intern – Optimum Codes</h5>
+            </div>
+            <p class="mb-2">June 02, 2025 – August 02, 2025</p>
+            <p class="mb-3">Worked on PostgreSQL for databases, Python FastAPI for API endpoints, and React.js + Tailwind CSS for frontend, with UI design in Figma.</p>
+            <button class="btn btn-accent" onclick="openInternshipModal()"><i class="bi bi-file-earmark-pdf me-2"></i>View Certificate</button>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="intern-card h-100 p-4 p-md-5 rounded-4">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="intern-icon"><i class="bi bi-building"></i></div>
+              <h5 class="fw-bold mb-0">Software Engineer Intern – Blugate Software Technologies Pvt. Ltd.</h5>
+            </div>
+            <p class="mb-2">January 02, 2026 – April 30, 2026</p>
+            <p class="mb-3">Full-stack web development using Flask, Django, PostgreSQL, HTML, CSS, JavaScript, and REST APIs. Collaborated with the development team to build scalable applications.</p>
+            <button class="btn btn-accent" onclick="openBlugateModal()"><i class="bi bi-file-earmark-pdf me-2"></i>View Certificate</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section-padding">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Get In Touch</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="contact-card p-4 p-md-5 rounded-4">
+            <form method="POST" id="form">
+              <input type="hidden" name="access_key" value="861ac1d9-b2f0-44a8-8434-d5ee4d70908a">
+              <div class="mb-3">
+                <label for="name" class="form-label fw-semibold">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label fw-semibold">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" required>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label fw-semibold">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+              </div>
+              <input type="checkbox" name="botcheck" class="d-none">
+              <button type="submit" class="btn btn-accent w-100 py-2 fw-semibold">Send Message</button>
+              <div id="result" class="mt-3 text-center small fw-semibold"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CERTIFICATE PDF MODAL (Education) ===== -->
+  <div class="modal fade" id="pdfModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content border-0">
+        <div class="modal-header border-0 pb-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body pt-2">
+          <iframe id="pdfFrame" src="" width="100%" height="550px" style="border:none;border-radius:8px;" title="Certificate PDF"></iframe>
+        </div>
+        <div class="modal-footer border-0 justify-content-center pt-0">
+          <button type="button" class="btn btn-accent" data-bs-dismiss="modal"><i class="bi bi-x-circle me-2"></i>Close PDF</button>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Blugate Internship Certificate Modal -->
-<div id="blugateModal" class="modal" aria-hidden="true">
-  <div class="modal-content">
-    <button class="close-btn" onclick="closeBlugateModal()" aria-label="Close certificate">&times;</button>
-    <div id="blugatePreviewView">
-      <img src="blugate_internship.png" alt="Blugate Certificate Preview" class="cert-preview">
-      <button class="pdf-btn" onclick="showBlugatePDF()">View Full PDF</button>
-    </div>
-    <div id="blugatePdfView" style="display:none;">
-      <iframe src="blugate_internship.pdf" width="100%" height="500px" title="Blugate Internship Certificate PDF"></iframe>
+  <!-- ===== OPTIMUM CODES INTERNSHIP MODAL ===== -->
+  <div class="modal fade" id="certificateModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content border-0">
+        <div class="modal-header border-0 pb-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body pt-2">
+          <div id="previewView" class="text-center">
+            <img src="completionLetter_preview.jpg" alt="Certificate Preview" class="img-fluid rounded-3 mb-3" style="max-height:500px;">
+            <div class="text-center">
+              <button class="btn btn-accent" onclick="showInternshipPDF()"><i class="bi bi-file-earmark-pdf me-2"></i>View Full PDF</button>
+            </div>
+          </div>
+          <div id="pdfView" class="text-center" style="display:none;">
+            <iframe src="completionLetter_Abishek.pdf" width="100%" height="550px" style="border:none;border-radius:8px;" title="Internship Certificate PDF"></iframe>
+          </div>
+        </div>
+        <div class="modal-footer border-0 justify-content-center pt-0">
+          <button type="button" class="btn btn-accent" data-bs-dismiss="modal"><i class="bi bi-x-circle me-2"></i>Close Certificate</button>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-
-  <!-- Animated Waves (BOTTOM) -->
-  <div class="wave wave-bottom" aria-hidden="true">
-    <svg viewBox="0 0 1440 180" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="gradBottom" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#B3E5FC"/>
-          <stop offset="100%" stop-color="#A5F3FC"/>
-        </linearGradient>
-      </defs>
-      <path class="wave-fill wave-1" d="M0,120 C240,180 480,60 720,120 C960,180 1200,80 1440,130 L1440,180 L0,180 Z" fill="url(#gradBottom)"/>
-      <path class="wave-fill wave-2" d="M0,140 C240,200 480,80 720,140 C960,200 1200,100 1440,150 L1440,180 L0,180 Z" fill="url(#gradBottom)"/>
-      <path class="wave-fill wave-3" d="M0,160 C240,220 480,100 720,160 C960,220 1200,120 1440,170 L1440,180 L0,180 Z" fill="url(#gradBottom)"/>
-    </svg>
+  <!-- ===== BLUGATE INTERNSHIP MODAL ===== -->
+  <div class="modal fade" id="blugateModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content border-0">
+        <div class="modal-header border-0 pb-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body pt-2">
+          <div id="blugatePreviewView" class="text-center">
+            <img src="blugate_internship.png" alt="Blugate Certificate Preview" class="img-fluid rounded-3 mb-3" style="max-height:500px;">
+            <div class="text-center">
+              <button class="btn btn-accent" onclick="showBlugatePDF()"><i class="bi bi-file-earmark-pdf me-2"></i>View Full PDF</button>
+            </div>
+          </div>
+          <div id="blugatePdfView" class="text-center" style="display:none;">
+            <iframe src="blugate_internship.pdf" width="100%" height="550px" style="border:none;border-radius:8px;" title="Blugate Internship Certificate PDF"></iframe>
+          </div>
+        </div>
+        <div class="modal-footer border-0 justify-content-center pt-0">
+          <button type="button" class="btn btn-accent" data-bs-dismiss="modal"><i class="bi bi-x-circle me-2"></i>Close Certificate</button>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Abhishek Shetty. All rights reserved.</p>
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer-section text-center py-4">
+    <div class="container">
+      <p class="mb-0 small">&copy; <span id="year"></span> Abhishek Shetty. All rights reserved.</p>
+    </div>
   </footer>
 
-  <script>
-  // Sidebar
-  function openSidebar() {
-    const el = document.getElementById("sidebar");
-    el.style.width = "260px";
-    el.setAttribute("aria-hidden", "false");
-  }
-  function closeSidebar() {
-    const el = document.getElementById("sidebar");
-    el.style.width = "0";
-    el.setAttribute("aria-hidden", "true");
-  }
+  <!-- ===== BACKGROUND TOGGLE BUTTON ===== -->
+  <button class="bg-toggle" id="bgToggle" title="Toggle Background Animation">
+    <i class="bi bi-joystick"></i>
+  </button>
 
-  // Education Certificate Modal
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+  // ---- Education Certificate Modal (Bootstrap) ----
+  const eduModal = new bootstrap.Modal(document.getElementById('pdfModal'));
   function openModal(pdfFile) {
     document.getElementById('pdfFrame').src = pdfFile;
-    document.getElementById('pdfModal').style.display = 'flex';
+    eduModal.show();
   }
-  function closeModal() {
-    document.getElementById('pdfModal').style.display = 'none';
+  document.getElementById('pdfModal').addEventListener('hidden.bs.modal', function () {
     document.getElementById('pdfFrame').src = "";
-  }
+  });
 
-  // Internship Certificate Modal
+  // ---- Optimum Codes Internship Modal (Bootstrap) ----
+  const optimumModal = new bootstrap.Modal(document.getElementById('certificateModal'));
   function openInternshipModal() {
-    document.getElementById("certificateModal").style.display = "flex";
-  }
-  function closeInternshipModal() {
-    document.getElementById("certificateModal").style.display = "none";
-    document.getElementById("previewView").style.display = "block";
-    document.getElementById("pdfView").style.display = "none";
+    document.getElementById('previewView').style.display = "block";
+    document.getElementById('pdfView').style.display = "none";
+    optimumModal.show();
   }
   function showInternshipPDF() {
-    document.getElementById("previewView").style.display = "none";
-    document.getElementById("pdfView").style.display = "block";
+    document.getElementById('previewView').style.display = "none";
+    document.getElementById('pdfView').style.display = "block";
   }
+  document.getElementById('certificateModal').addEventListener('hidden.bs.modal', function () {
+    document.getElementById('previewView').style.display = "block";
+    document.getElementById('pdfView').style.display = "none";
+  });
 
-  // Blugate Internship Certificate Modal
+  // ---- Blugate Internship Modal (Bootstrap) ----
+  const blugateModal = new bootstrap.Modal(document.getElementById('blugateModal'));
   function openBlugateModal() {
-    document.getElementById("blugateModal").style.display = "flex";
-  }
-  function closeBlugateModal() {
-    document.getElementById("blugateModal").style.display = "none";
-    document.getElementById("blugatePreviewView").style.display = "block";
-    document.getElementById("blugatePdfView").style.display = "none";
+    document.getElementById('blugatePreviewView').style.display = "block";
+    document.getElementById('blugatePdfView').style.display = "none";
+    blugateModal.show();
   }
   function showBlugatePDF() {
-    document.getElementById("blugatePreviewView").style.display = "none";
-    document.getElementById("blugatePdfView").style.display = "block";
+    document.getElementById('blugatePreviewView').style.display = "none";
+    document.getElementById('blugatePdfView').style.display = "block";
   }
+  document.getElementById('blugateModal').addEventListener('hidden.bs.modal', function () {
+    document.getElementById('blugatePreviewView').style.display = "block";
+    document.getElementById('blugatePdfView').style.display = "none";
+  });
 
-  
-window.addEventListener("load", () => {
-  const loader = document.getElementById("loader");
-  const header = document.querySelector("header");
-  const introName = document.querySelector(".intro-name");
-  const introSubtitle = document.querySelector(".intro-subtitle");
-
-  // Wait until typing finishes (~2s)
-  setTimeout(() => {
-    loader.style.opacity = "0";   // fade out loader
-    setTimeout(() => {
-      loader.style.display = "none";  
-
-      // Reveal header smoothly at top
-      header.style.opacity = "1";
-      header.style.marginTop = "0";
-      header.style.paddingTop = "0";
-
-      introName.classList.add("name-animate");
-      introSubtitle.classList.add("subtitle-animate");
-    }, 600);
-  }, 2200);
-});
-
-
-
-
-
-
-  // Fade-in on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) entry.target.classList.add("fade-in");
+  // ---- Contact Form (Web3Forms) ----
+  const form = document.getElementById('form');
+  const result = document.getElementById('result');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+    result.style.display = "block";
+    result.innerHTML = "Please wait...";
+    result.style.color = "#6c757d";
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: json
+    })
+    .then(async (response) => {
+      let json = await response.json();
+      if (response.status == 200) {
+        result.style.color = "#198754";
+        result.innerHTML = "✅ Form submitted successfully!";
+      } else {
+        result.style.color = "#dc3545";
+        result.innerHTML = json.message;
+      }
+    })
+    .catch(() => {
+      result.style.color = "#dc3545";
+      result.innerHTML = "❌ Something went wrong!";
+    })
+    .then(() => {
+      form.reset();
+      setTimeout(() => { result.style.display = "none"; }, 3000);
     });
-  }, { threshold: 0.2 });
-  document.querySelectorAll("section").forEach((sec) => observer.observe(sec));
-</script>
+  });
+
+  // ---- Dynamic footer year ----
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---- Smooth scroll for nav links ----
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      // Close mobile menu
+      const navCollapse = document.getElementById('navMenu');
+      const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+      if (bsCollapse) bsCollapse.hide();
+    });
+  });
+
+  // ---- Scroll to reveal sections ----
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.section-padding').forEach(s => observer.observe(s));
+
+  // ==========================================================
+  // ===== GAMER BACKGROUND ANIMATION ENGINE =====
+  // ==========================================================
+  (function() {
+    const canvas = document.getElementById('bgCanvas');
+    const toggleBtn = document.getElementById('bgToggle');
+    const ctx = canvas.getContext('2d');
+    let animId = null;
+    let paused = false;
+
+    // ---- Resize canvas ----
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // ---- 1. Floating Particles (Hexagons & Dots) ----
+    const particles = [];
+    const PARTICLE_COUNT = 60;
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1.5;
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.speedY = (Math.random() - 0.5) * 0.4;
+        this.opacity = Math.random() * 0.5 + 0.2;
+        this.shape = Math.random() > 0.6 ? 'hex' : 'circle';
+        this.pulse = Math.random() * Math.PI * 2;
+        this.pulseSpeed = Math.random() * 0.02 + 0.01;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.pulse += this.pulseSpeed;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+      draw() {
+        const alpha = this.opacity * (0.7 + 0.3 * Math.sin(this.pulse));
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = '#64ffda';
+        if (this.shape === 'hex') {
+          // Draw hexagon
+          ctx.beginPath();
+          for (let i = 0; i < 6; i++) {
+            const angle = (Math.PI / 3) * i - Math.PI / 6;
+            const r = this.size * 1.8;
+            const px = Math.cos(angle) * r;
+            const py = Math.sin(angle) * r;
+            i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+          }
+          ctx.closePath();
+          ctx.fill();
+        } else {
+          ctx.beginPath();
+          ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+    }
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push(new Particle());
+    }
+
+    // ---- 3. Neon Grid Lines ----
+    const gridSpacing = 80;
+    let gridOffset = 0;
+
+    function drawGrid() {
+      ctx.strokeStyle = 'rgba(100, 255, 218, 0.04)';
+      ctx.lineWidth = 1;
+      gridOffset = (gridOffset + 0.15) % gridSpacing;
+      // Vertical lines
+      for (let x = gridOffset; x < canvas.width; x += gridSpacing) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+      }
+      // Horizontal lines
+      for (let y = gridOffset; y < canvas.height; y += gridSpacing) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+      }
+    }
+
+    // ---- 4. Glow Pulse Waves ----
+    let pulseTime = 0;
+    const pulseWaves = [];
+
+    function createPulseWave() {
+      if (Math.random() > 0.005) return;
+      pulseWaves.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: 10,
+        maxRadius: Math.max(canvas.width, canvas.height) * 0.5,
+        opacity: 0.15,
+        growth: 1.5
+      });
+    }
+
+    function drawPulseWaves() {
+      for (let i = pulseWaves.length - 1; i >= 0; i--) {
+        const w = pulseWaves[i];
+        w.radius += w.growth;
+        w.opacity *= 0.985;
+        ctx.beginPath();
+        ctx.arc(w.x, w.y, w.radius, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(100, 255, 218, ${w.opacity})`;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+        if (w.opacity < 0.005 || w.radius > w.maxRadius) {
+          pulseWaves.splice(i, 1);
+        }
+      }
+    }
+
+    // ---- Main Animation Loop ----
+    function animate() {
+      // Clear with dark overlay for trail effect
+      ctx.fillStyle = 'rgba(10, 25, 47, 0.15)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      drawGrid();
+      createPulseWave();
+      drawPulseWaves();
+      // Draw particles
+      for (const p of particles) {
+        p.update();
+        p.draw();
+      }
+      // Draw connecting lines between nearby particles
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 140) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(100, 255, 218, ${0.06 * (1 - dist / 140)})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+
+      animId = requestAnimationFrame(animate);
+    }
+
+    // ---- Toggle ----
+    function toggleBg() {
+      paused = !paused;
+      canvas.classList.toggle('paused', paused);
+      toggleBtn.innerHTML = paused ? '<i class="bi bi-joystick"></i>' : '<i class="bi bi-joystick"></i>';
+      toggleBtn.style.opacity = paused ? '0.5' : '1';
+      if (paused) {
+        if (animId) {
+          cancelAnimationFrame(animId);
+          animId = null;
+        }
+        // Pause state - show subtle static
+        ctx.fillStyle = 'rgba(10, 25, 47, 0.95)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      } else {
+        animate();
+      }
+    }
+
+    toggleBtn.addEventListener('click', toggleBg);
+
+    // ---- Start animation ----
+    animate();
+
+  })();
+  </script>
 </body>
 </html>
+
