@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Abhishek Shetty - Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
+
 <body>
 
-  <!-- YouTube-style Loader -->
-  <div id="loader">
-    <div class="logo-animation">
-      <span class="loader-letter">A</span>
-      <div class="loader-bar"></div>
-    </div>
-  </div>
+  <!-- Loader -->
+<div id="loader">
+  <span class="signature-logo">Abhishek Shetty</span>
+</div>
+
 
   <!-- Animated Waves (TOP) -->
   <div class="wave wave-top" aria-hidden="true">
@@ -71,13 +71,13 @@
   <div class="about-container">
     <img src="p.jpg" alt="Abhishek Shetty">
     <p>
-      I am a passionate and detail-oriented developer with experience in **web development, software engineering, and data analysis**.  
-      My work focuses on creating **functional, aesthetic, and performance-driven solutions** that solve real-world problems.  
+      I am a passionate and detail-oriented developer with experience in <b>web development, software engineering, and data analysis</b>.  
+      My work focuses on creating <b>functional, aesthetic, and performance-driven solutions</b> that solve real-world problems.  
       <br><br>
-      I have a strong background in **Python, JavaScript, Java, C, and C++**, and I enjoy working with **modern frameworks like ReactJS, Tailwind CSS, and FastAPI**.  
-      I’m also skilled in **database design and optimization** with MySQL and PostgreSQL.  
+      I have a strong background in <b>Python, JavaScript, Java, C, and C++</b>, and I enjoy working with **modern frameworks like ReactJS, Tailwind CSS, and FastAPI**.  
+      I’m also skilled in <b>database design and optimization</b> with MySQL and PostgreSQL.  
       <br><br>
-      Beyond coding, I’m deeply interested in **UI/UX design**, **data visualization**, and **automation tools** that simplify workflows.  
+      Beyond coding, I’m deeply interested in <b>UI/UX design,data visualization</b>, and <b>version control</b> that simplify workflows.  
       I enjoy collaborating with teams, mentoring juniors, and experimenting with new tech to stay ahead in the industry.
     </p>
   </div>
@@ -173,19 +173,52 @@
 </section>
 
 
-    <section id="education">
-      <h2>Education</h2>
-      <ul class="education-box">
-        <li><strong>BCA</strong> – Mahatma Gandhi Memorial College, Udupi <br>Completed 2023 | First Class</li>
-        <li><strong>MCA</strong> – Manipal Institute of Technology, Manipal <br>Ongoing (Expected 2026)</li>
-        <li><strong>Certifications</strong>
-          <ul>
-            <li>Power BI – Coursera</li>
-            <li>Data Science with Python – Coursera</li>
-          </ul>
+    <!-- Education Section -->
+<section id="education">
+  <h2>Education</h2>
+  <ul class="education-box">
+    <li><strong>BCA</strong> – Mahatma Gandhi Memorial College, Udupi <br>Completed 2024 | CGPA:9.2/10</li>
+    <li><strong>MCA</strong> – Manipal Institute of Technology, Manipal <br>Ongoing (Expected 2026) | Current CGPA:7.32/10</li>
+    <li><strong>Certifications</strong>
+      <ul>
+        <li>Excel Power Tools for Data Analysis – Coursera
+          <button class="view-cert-btn" onclick="openModal('Abhishek_shetty_240970083.pdf')">View Certificate</button>
+        </li>
+        <li>Introduction to Mobile Development – Coursera
+          <button class="view-cert-btn" onclick="openModal('intro to mobile development.pdf')">View Certificate</button>
+        </li>
+        <li>Harnessing the Power of Data with Power BI – Coursera
+          <button class="view-cert-btn" onclick="openModal('power bi2.pdf')">View Certificate</button>
+        </li>
+        <li>Programming for Everybody (Python) – Coursera
+          <button class="view-cert-btn" onclick="openModal('programming for everybody.pdf')">View Certificate</button>
+        </li>
+        <li>Programming with JavaScript – Coursera
+          <button class="view-cert-btn" onclick="openModal('programming with javascript.pdf')">View Certificate</button>
+        </li>
+        <li>Python Data Structures – Coursera
+          <button class="view-cert-btn" onclick="openModal('python data structures.pdf')">View Certificate</button>
+        </li>
+        <li>Capstone: Data with Python – Coursera
+          <button class="view-cert-btn" onclick="openModal('python.pdf')">View Certificate</button>
+        </li>
+        <li>Software Engineer Intern – Blugate Software Technologies Pvt. Ltd.
+          <button class="view-cert-btn" onclick="openBlugateModal()">View Certificate</button>
         </li>
       </ul>
-    </section>
+    </li>
+  </ul>
+</section>
+
+<!-- Modal -->
+<div class="modal" id="pdfModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">✖</span>
+    <iframe id="pdfFrame" src=""></iframe>
+  </div>
+</div>
+
+
 
     <section id="internship">
       <h2>Internship</h2>
@@ -197,7 +230,19 @@
             Worked on PostgreSQL for databases, Python FastAPI for API endpoints,  
             and React.js + Tailwind CSS for frontend, with UI design in Figma.
           </p>
-          <button class="view-cert-btn" onclick="openModal()">View Certificate</button>
+          <button class="view-cert-btn" onclick="openInternshipModal()">View Certificate</button>
+        </div>
+
+        <div class="project">
+          <h3>Software Engineer Intern – Blugate Software Technologies Pvt. Ltd.</h3>
+          <p>
+            Successfully completed a 4-month internship from January 02, 2026 to April 30, 2026.  
+            Worked on full-stack web application development using Flask, Django,
+            PostgreSQL, HTML, CSS, JavaScript, and REST APIs. Collaborated
+            with the development team to build scalable applications and gained
+            practical experience in backend development and database management.
+          </p>
+          <button class="view-cert-btn" onclick="openBlugateModal()">View Certificate</button>
         </div>
       </div>
     </section>
@@ -281,19 +326,34 @@ form.addEventListener('submit', function(e) {
 
   </main>
 
-  <!-- Certificate Modal -->
-  <div id="certificateModal" class="modal" aria-hidden="true">
-    <div class="modal-content">
-      <button class="close-btn" onclick="closeModal()" aria-label="Close certificate">&times;</button>
-      <div id="previewView">
-        <img src="completionLetter_preview.jpg" alt="Certificate Preview" class="cert-preview">
-        <button class="pdf-btn" onclick="showPDF()">View Full PDF</button>
-      </div>
-      <div id="pdfView" style="display:none;">
-        <iframe src="completionLetter_Abishek.pdf" width="100%" height="500px" title="Internship Certificate PDF"></iframe>
-      </div>
+  <!-- Optimum Codes Internship Certificate Modal -->
+<div id="certificateModal" class="modal" aria-hidden="true">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeInternshipModal()" aria-label="Close certificate">&times;</button>
+    <div id="previewView">
+      <img src="completionLetter_preview.jpg" alt="Certificate Preview" class="cert-preview">
+      <button class="pdf-btn" onclick="showInternshipPDF()">View Full PDF</button>
+    </div>
+    <div id="pdfView" style="display:none;">
+      <iframe src="completionLetter_Abishek.pdf" width="100%" height="500px" title="Internship Certificate PDF"></iframe>
     </div>
   </div>
+</div>
+
+<!-- Blugate Internship Certificate Modal -->
+<div id="blugateModal" class="modal" aria-hidden="true">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeBlugateModal()" aria-label="Close certificate">&times;</button>
+    <div id="blugatePreviewView">
+      <img src="blugate_internship.png" alt="Blugate Certificate Preview" class="cert-preview">
+      <button class="pdf-btn" onclick="showBlugatePDF()">View Full PDF</button>
+    </div>
+    <div id="blugatePdfView" style="display:none;">
+      <iframe src="blugate_internship.pdf" width="100%" height="500px" title="Blugate Internship Certificate PDF"></iframe>
+    </div>
+  </div>
+</div>
+
 
   <!-- Animated Waves (BOTTOM) -->
   <div class="wave wave-bottom" aria-hidden="true">
@@ -315,53 +375,92 @@ form.addEventListener('submit', function(e) {
   </footer>
 
   <script>
-    // Sidebar
-    function openSidebar() {
-      const el = document.getElementById("sidebar");
-      el.style.width = "260px";
-      el.setAttribute("aria-hidden", "false");
-    }
-    function closeSidebar() {
-      const el = document.getElementById("sidebar");
-      el.style.width = "0";
-      el.setAttribute("aria-hidden", "true");
-    }
+  // Sidebar
+  function openSidebar() {
+    const el = document.getElementById("sidebar");
+    el.style.width = "260px";
+    el.setAttribute("aria-hidden", "false");
+  }
+  function closeSidebar() {
+    const el = document.getElementById("sidebar");
+    el.style.width = "0";
+    el.setAttribute("aria-hidden", "true");
+  }
 
-    // Certificate Modal
-    function openModal() {
-      document.getElementById("certificateModal").style.display = "flex";
-    }
-    function closeModal() {
-      document.getElementById("certificateModal").style.display = "none";
-      document.getElementById("previewView").style.display = "block";
-      document.getElementById("pdfView").style.display = "none";
-    }
-    function showPDF() {
-      document.getElementById("previewView").style.display = "none";
-      document.getElementById("pdfView").style.display = "block";
-    }
+  // Education Certificate Modal
+  function openModal(pdfFile) {
+    document.getElementById('pdfFrame').src = pdfFile;
+    document.getElementById('pdfModal').style.display = 'flex';
+  }
+  function closeModal() {
+    document.getElementById('pdfModal').style.display = 'none';
+    document.getElementById('pdfFrame').src = "";
+  }
 
-    // Loader → reveal header animation
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        const loader = document.getElementById("loader");
-        loader.style.opacity = "0";
-        loader.style.transition = "opacity 0.6s ease";
-        setTimeout(() => {
-          loader.style.display = "none";
-          document.querySelector(".intro-name").classList.add("name-animate");
-          document.querySelector(".intro-subtitle").classList.add("subtitle-animate");
-        }, 600);
-      }, 2000);
+  // Internship Certificate Modal
+  function openInternshipModal() {
+    document.getElementById("certificateModal").style.display = "flex";
+  }
+  function closeInternshipModal() {
+    document.getElementById("certificateModal").style.display = "none";
+    document.getElementById("previewView").style.display = "block";
+    document.getElementById("pdfView").style.display = "none";
+  }
+  function showInternshipPDF() {
+    document.getElementById("previewView").style.display = "none";
+    document.getElementById("pdfView").style.display = "block";
+  }
+
+  // Blugate Internship Certificate Modal
+  function openBlugateModal() {
+    document.getElementById("blugateModal").style.display = "flex";
+  }
+  function closeBlugateModal() {
+    document.getElementById("blugateModal").style.display = "none";
+    document.getElementById("blugatePreviewView").style.display = "block";
+    document.getElementById("blugatePdfView").style.display = "none";
+  }
+  function showBlugatePDF() {
+    document.getElementById("blugatePreviewView").style.display = "none";
+    document.getElementById("blugatePdfView").style.display = "block";
+  }
+
+  
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  const header = document.querySelector("header");
+  const introName = document.querySelector(".intro-name");
+  const introSubtitle = document.querySelector(".intro-subtitle");
+
+  // Wait until typing finishes (~2s)
+  setTimeout(() => {
+    loader.style.opacity = "0";   // fade out loader
+    setTimeout(() => {
+      loader.style.display = "none";  
+
+      // Reveal header smoothly at top
+      header.style.opacity = "1";
+      header.style.marginTop = "0";
+      header.style.paddingTop = "0";
+
+      introName.classList.add("name-animate");
+      introSubtitle.classList.add("subtitle-animate");
+    }, 600);
+  }, 2200);
+});
+
+
+
+
+
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add("fade-in");
     });
-
-    // Fade-in on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add("fade-in");
-      });
-    }, { threshold: 0.2 });
-    document.querySelectorAll("section").forEach((sec) => observer.observe(sec));
-  </script>
+  }, { threshold: 0.2 });
+  document.querySelectorAll("section").forEach((sec) => observer.observe(sec));
+</script>
 </body>
 </html>
