@@ -1,719 +1,376 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Abhishek Shetty - Portfolio</title>
-
-  <!-- Bootstrap 5 + Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="styles.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abhishek Shetty – Aspiring Data Analyst, Software Engineer & Python Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+:root{--on:#fff;--bg:#eef0f3;--cell:#fff;--ink:#14202f;--muted:#5b6778;--line:#d5dbe3;--blue:#2457d6;--orange:#e8590c;--green:#1b8a5a;--code:#f5f7fa;--kw:#b0306a;--str:#1b7a4b;--grid:rgba(20,32,47,.06)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0c121c;--cell:#141c2b;--ink:#e9eef7;--muted:#97a4ba;--line:#24304a;--blue:#7ba0ff;--orange:#ff8a4c;--green:#4fd39a;--code:#0f1624;--kw:#ff7eb3;--str:#7ee0a8;--grid:rgba(255,255,255,.05)}}
+:root[data-theme=dark]{--on:#04121a;--bg:#060a11;--cell:rgba(13,21,35,.74);--ink:#eef2f8;--muted:#98a6bd;--line:#1e2a40;--blue:#5fd3e0;--orange:#ff9a4d;--green:#4fd39a;--code:rgba(6,10,17,.7);--kw:#ff9a4d;--str:#7ee0a8;--grid:rgba(95,211,224,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;color:var(--ink);font:400 1rem/1.65 "Instrument Sans",sans-serif;background:var(--bg);background-image:radial-gradient(var(--grid) 1.2px,transparent 1.2px);background-size:26px 26px}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;margin:0;line-height:1.1}
+code,.mono{font-family:"JetBrains Mono",monospace}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),var(--blue));z-index:50}
+nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.w{max-width:960px;margin:0 auto;padding:0 20px}
+nav .w{display:flex;justify-content:space-between;align-items:center;height:58px}
+nav b{font:600 .9rem "JetBrains Mono"}nav b i{color:var(--orange);font-style:normal}
+nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;align-items:center}
+nav a{text-decoration:none;color:var(--muted);font-size:.92rem;font-weight:500}nav a:hover,nav a.on{color:var(--ink)}
+#theme{background:none;border:1px solid var(--line);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer}
+@media(max-width:820px){nav li:not(:last-child){display:none}}
+main{padding:36px 0 60px;position:relative;z-index:2}
+/* notebook cell */
+.cell{display:grid;grid-template-columns:78px 1fr;gap:12px;margin-bottom:34px;opacity:0;transform:translateY(34px) scale(.97);filter:blur(10px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1),filter .9s}
+.cell.in{opacity:1;transform:none;filter:none}
+.gut{font:400 .8rem "JetBrains Mono";color:var(--blue);text-align:right;padding-top:14px;white-space:nowrap}
+.gut.run{color:var(--orange)}
+.gut.run::after{content:"*";display:inline-block;animation:spin .6s steps(4) infinite}
+@keyframes spin{50%{opacity:.2}}
+.box{backdrop-filter:blur(14px);background:var(--cell);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:26px 28px;position:relative;overflow:hidden}
+.cell.in .box{animation:flash 1.1s ease-out}
+@keyframes flash{from{box-shadow:0 0 0 2px var(--orange)}to{box-shadow:0 0 0 0 transparent}}
+@media(max-width:700px){.cell{grid-template-columns:1fr}.gut{text-align:left;padding:0}.box{padding:20px}}
+.cm{font:400 .82rem "JetBrains Mono";color:var(--muted);margin-bottom:6px}
+h2{font-size:clamp(1.6rem,3.6vw,2.3rem);font-weight:800;margin-bottom:18px}
+/* hero */
+.hero .box{padding:0;border-left-color:var(--orange)}
+.src{background:var(--code);padding:22px 28px;font:400 .95rem/1.7 "JetBrains Mono";min-height:150px;white-space:pre-wrap;overflow-x:auto}
+.kw{color:var(--kw)}.st{color:var(--str)}
+.caret{display:inline-block;width:8px;height:1.1em;background:var(--ink);vertical-align:-3px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.out{padding:26px 28px;display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:center}
+@media(max-width:700px){.out{grid-template-columns:1fr}}
+.out img{width:150px;height:150px;border-radius:50%;object-fit:cover;border:3px solid var(--orange);opacity:0;transform:scale(.7) rotate(-8deg);transition:.7s cubic-bezier(.2,1.4,.4,1)}
+.out.show img{opacity:1;transform:none}
+.out h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:800;letter-spacing:-.02em}
+.out p{color:var(--muted);margin:10px 0 18px;max-width:52ch}
+.tbl{font:400 .85rem "JetBrains Mono";margin-bottom:18px}
+.tbl div{display:flex;gap:16px;opacity:0;transform:translateY(6px);transition:.4s}
+.out.show .tbl div{opacity:1;transform:none}
+.tbl span:first-child{color:var(--muted);width:70px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;gap:8px;align-items:center;padding:10px 18px;border-radius:8px;font:600 .92rem "Instrument Sans";text-decoration:none;border:1px solid var(--blue);cursor:pointer}
+.btn.p{background:var(--blue);color:var(--on)}.btn.s{background:none;color:var(--blue)}
+.btn{transition:transform .2s}.btn:hover{transform:translateY(-3px)}
+.soc{display:flex;gap:14px;margin-top:16px;font-size:1.25rem}.soc a{color:var(--muted);transition:.2s}.soc a:hover{color:var(--orange);transform:translateY(-3px)}
+/* about + counters */
+.two{display:grid;grid-template-columns:1.3fr 1fr;gap:28px}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.cnt{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cnt div{background:var(--code);border-radius:8px;padding:12px 14px}
+.cnt b{font:800 1.8rem "Bricolage Grotesque";display:block;color:var(--blue)}.cnt span{font-size:.82rem;color:var(--muted)}
+/* skills */
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.sg h3{font:500 .85rem "JetBrains Mono";color:var(--orange);margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chips span{background:var(--code);border:1px solid var(--line);border-radius:6px;padding:3px 10px;font-size:.84rem;font-weight:500;opacity:0;transform:scale(.8);transition:opacity .35s,transform .35s,border-color .2s}
+.in .chips span{opacity:1;transform:none}
+.chips span:hover{border-color:var(--blue);transform:translateY(-2px)}
+/* projects */
+.tag{display:inline-block;font:500 .72rem "JetBrains Mono";background:var(--orange);color:#fff;padding:2px 9px;border-radius:5px;margin-bottom:10px}
+.tag.dev{background:var(--blue);color:var(--on)}
+.proj{display:grid;grid-template-columns:1.2fr 1fr;gap:26px}
+@media(max-width:800px){.proj{grid-template-columns:1fr}}
+.proj h3{font-size:1.5rem;margin-bottom:8px}.proj p{margin:0 0 10px;color:var(--muted)}
+.proj ul{padding-left:18px;margin:0 0 14px;font-size:.94rem}.proj li{margin-bottom:4px}
+.viz{background:var(--code);border-radius:10px;padding:16px;align-self:start}
+.viz svg{width:100%;height:auto;display:block}.viz small{display:block;color:var(--muted);font:400 .74rem "JetBrains Mono";margin:6px 0 10px}
+.bar{fill:var(--blue);transform-origin:bottom;transform-box:fill-box;transform:scaleY(0);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.in .bar{transform:none}
+.ln{fill:none;stroke:var(--orange);stroke-width:2.5;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.8s ease .3s}
+.in .ln{stroke-dashoffset:0}
+.arc{fill:none;stroke-width:14;stroke-dasharray:0 100;transition:stroke-dasharray 1.3s cubic-bezier(.2,.8,.2,1)}
+.mini{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.mini>div{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:18px;transition:transform .25s,border-color .25s}
+.mini>div:hover{transform:translateY(-5px) rotate(-.4deg);border-color:var(--blue)}
+.mini i.ic{font-size:1.4rem;color:var(--blue)}.mini h3{font-size:1.1rem;margin:8px 0 6px}
+.mini ul{padding-left:18px;margin:0 0 12px;font-size:.88rem;color:var(--muted)}
+/* timeline */
+.tl{border-left:2px dashed var(--line);margin-left:6px}
+.tl article{position:relative;padding:0 0 24px 24px}
+.tl article::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 var(--green);animation:ping 2.4s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 9px transparent}}
+.tl h3{font-size:1.1rem}.tl time{color:var(--muted);font:400 .8rem "JetBrains Mono"}.tl p{margin:6px 0 8px;font-size:.95rem}
+.link{background:none;border:0;color:var(--blue);font:600 .9rem "Instrument Sans";cursor:pointer;padding:0}.link:hover{text-decoration:underline}
+.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:8px;margin-top:6px}
+.certs div{display:flex;justify-content:space-between;gap:10px;background:var(--code);border:1px solid var(--line);border-radius:8px;padding:9px 14px;font-size:.9rem}
+form label{display:block;font-weight:600;font-size:.9rem;margin-bottom:4px}
+form input,form textarea{width:100%;font:inherit;color:var(--ink);background:var(--code);border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:14px}
+form input:focus,form textarea:focus{border-color:var(--orange);outline:none}
+#result{margin-top:10px;font-weight:600;font-size:.9rem}
+footer{text-align:center;color:var(--muted);font:400 .82rem "JetBrains Mono";padding:26px 0;border-top:1px solid var(--line)}
+dialog{border:0;border-radius:12px;padding:0;width:min(940px,94vw);background:var(--bg);color:var(--ink)}
+dialog::backdrop{background:rgba(5,10,20,.6)}
+dialog header{display:flex;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--line)}
+dialog iframe{width:100%;height:70vh;border:0;display:block}dialog img{max-width:100%;display:block;margin:auto}
+/* ---- cinematic layer ---- */
+body::before{content:"";position:fixed;inset:-50%;z-index:60;pointer-events:none;opacity:.08;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");animation:grain .9s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}}
+body::after{content:"";position:fixed;inset:0;z-index:55;pointer-events:none;background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,.6) 100%)}
+:root[data-theme=light] body::after{opacity:.2}
+#spot{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(520px circle at var(--mx,50%) var(--my,25%),color-mix(in srgb,var(--blue) 14%,transparent),transparent 62%)}
+#sub{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:58;background:rgba(0,0,0,.6);color:#fff;padding:4px 16px;border-radius:4px;font:500 .82rem "JetBrains Mono";letter-spacing:.06em;opacity:0;transition:opacity .5s;pointer-events:none;white-space:nowrap}
+.hero .src,.hero .out{position:relative;z-index:1}
+.hero{margin-bottom:64px}.hero .box{isolation:isolate}
+.hero .box::before{content:"";position:absolute;left:-20%;right:-20%;top:34%;height:2px;background:linear-gradient(90deg,transparent,var(--blue),#fff,var(--blue),transparent);box-shadow:0 0 36px 8px color-mix(in srgb,var(--blue) 55%,transparent);opacity:.45;animation:sweep 7s ease-in-out infinite}
+@keyframes sweep{0%,100%{transform:translateX(-18%);opacity:.15}50%{transform:translateX(18%);opacity:.6}}
+.out h1{background:linear-gradient(100deg,var(--ink) 25%,var(--blue) 55%,var(--orange) 80%,var(--ink));background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite}
+@keyframes shine{to{background-position:-220% 0}}
+.out img{box-shadow:0 0 50px color-mix(in srgb,var(--orange) 45%,transparent)}
+#intro{position:fixed;inset:0;z-index:100;pointer-events:none}
+#intro .half{position:absolute;left:0;right:0;height:50.5%;background:#030509;transition:transform 1.3s cubic-bezier(.77,0,.18,1) 2.4s}
+#intro .t{top:0}#intro .b{bottom:0}
+#intro.go .t{transform:translateY(-101%)}#intro.go .b{transform:translateY(101%)}
+#intro .ttl{position:absolute;inset:0;display:grid;place-content:center;text-align:center;color:#eef2f8;animation:ttl 2.6s ease forwards}
+#intro .ttl span{font:800 clamp(1.5rem,5vw,3.2rem) "Bricolage Grotesque";letter-spacing:.7em;text-transform:uppercase;animation:track 2.6s cubic-bezier(.2,.7,.2,1) forwards}
+#intro .ttl small{max-width:90vw;line-height:1.6;font:400 .8rem "JetBrains Mono";color:#5fd3e0;margin-top:14px;letter-spacing:.22em}
+@keyframes ttl{0%{opacity:0}25%{opacity:1}80%{opacity:1}100%{opacity:0}}
+@keyframes track{to{letter-spacing:.22em}}
+#intro .flare{position:absolute;left:0;right:0;top:50%;height:2px;background:linear-gradient(90deg,transparent,#5fd3e0,#fff,#5fd3e0,transparent);box-shadow:0 0 40px 8px rgba(95,211,224,.6);transform:scaleX(0);animation:fl 2.4s ease forwards}
+@keyframes fl{40%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1.1);opacity:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.cell,.chips span,.tbl div,.out img{opacity:1!important;transform:none!important;filter:none!important}.bar{transform:none}.ln{stroke-dashoffset:0}html{scroll-behavior:auto}#intro,#spot{display:none}.out h1{color:var(--ink);background:none}}
+</style>
 </head>
 <body>
+<div id="progress"></div><div id="spot"></div><div id="sub"></div>
+<div id="intro" aria-hidden="true"><i class="half t"></i><i class="half b"></i><div class="ttl"><span>Abhishek Shetty</span><small>ASPIRING DATA ANALYST · SOFTWARE ENGINEER · PYTHON DEVELOPER</small></div><i class="flare"></i></div>
+<nav><div class="w">
+  <b>abhishek<i>.</i>ipynb</b>
+  <ul>
+    <li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li><li><a href="#education">Education</a></li><li><a href="#contact">Contact</a></li>
+    <li><button id="theme" aria-label="Toggle light and dark theme"><i class="bi bi-circle-half"></i></button></li>
+  </ul>
+</div></nav>
 
-  <!-- ===== GAMER BACKGROUND CANVAS ===== -->
-  <canvas id="bgCanvas"></canvas>
+<main class="w">
 
-  <!-- ===== NAVBAR ===== -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">Abhishek Shetty</a>
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-          <li class="nav-item"><a class="nav-link" href="#internship">Internship</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ===== HERO ===== -->
-  <section id="hero" class="hero-section d-flex align-items-center">
-    <div class="container text-center text-lg-start">
-      <div class="row align-items-center">
-        <div class="col-lg-5 text-center mb-4 mb-lg-0">
-          <img src="p.jpg" alt="Abhishek Shetty" class="hero-img rounded-circle img-fluid">
+<!-- HERO -->
+<div class="cell hero" data-fixed="1">
+  <div class="gut">In&nbsp;[1]:</div>
+  <div class="box">
+    <pre class="src" id="src" aria-label="Python code introducing Abhishek Shetty"></pre>
+    <div class="out" id="out">
+      <img src="p.jpg" alt="Abhishek Shetty">
+      <div>
+        <h1>Abhishek Shetty</h1>
+        <p>MCA graduate and aspiring Data Analyst, Software Engineer and Python Developer. I explore data with Python and SQL, and build the APIs and apps that produce it.</p>
+        <div class="tbl">
+          <div style="transition-delay:.3s"><span>role</span><span>Aspiring Data Analyst · Software Engineer · Python Developer</span></div>
+          <div style="transition-delay:.5s"><span>stack</span><span>Python · Pandas · SQL · React</span></div>
+          <div style="transition-delay:.7s"><span>base</span><span>Bengaluru, India</span></div>
         </div>
-        <div class="col-lg-7">
-          <p class="hero-greeting mb-1">Hello, I'm</p>
-          <h1 class="hero-name mb-2">Abhishek Shetty</h1>
-          <p class="hero-subtitle mb-4">Web Developer &middot; Software Engineer &middot; Data Analyst</p>
-          <p class="hero-desc mb-4">
-            Passionate developer crafting <span class="text-highlight">functional, aesthetic, and performance-driven</span> solutions.
-          </p>
-          <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
-            <a href="#projects" class="btn btn-primary px-4 py-2 fw-semibold">View Projects</a>
-            <a href="#contact" class="btn btn-outline-light px-4 py-2 fw-semibold">Contact Me</a>
-          </div>
-          <div class="hero-social mt-4 d-flex gap-3 justify-content-center justify-content-lg-start">
-            <a href="mailto:aabhishekshetty7@gmail.com" target="_blank" class="social-link" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
-            <a href="https://github.com/Abhishek-shetty-16" target="_blank" class="social-link" aria-label="GitHub"><i class="bi bi-github"></i></a>
-            <a href="https://www.linkedin.com/in/abhishek-shetty-0a58382a3/" target="_blank" class="social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-            <a href="https://www.instagram.com/" target="_blank" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ABOUT ===== -->
-  <section id="about" class="section-padding">
-    <div class="container">
-      <h2 class="section-title text-center mb-5">About Me</h2>
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="about-card p-4 p-md-5 rounded-4">
-            <p class="mb-4">
-              I am a passionate and detail-oriented developer with experience in <strong>web development, software engineering, and data analysis</strong>.
-              My work focuses on creating <strong>functional, aesthetic, and performance-driven solutions</strong> that solve real-world problems.
-            </p>
-            <p class="mb-4">
-              I have a strong background in <strong>Python, JavaScript, Java, C, and C++</strong>, and I enjoy working with modern frameworks like ReactJS, Tailwind CSS, and FastAPI.
-              I'm also skilled in <strong>database design and optimization</strong> with MySQL and PostgreSQL.
-            </p>
-            <p class="mb-0">
-              Beyond coding, I'm deeply interested in <strong>UI/UX design, data visualization</strong>, and <strong>version control</strong> that simplify workflows.
-              I enjoy collaborating with teams, mentoring juniors, and experimenting with new tech to stay ahead in the industry.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="text-center mt-5 mb-4 fw-bold" style="color: var(--accent);">Skills &amp; Technologies</h3>
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="d-flex flex-wrap justify-content-center gap-2">
-            <span class="skill-badge">Python</span>
-            <span class="skill-badge">JavaScript</span>
-            <span class="skill-badge">Java</span>
-            <span class="skill-badge">C</span>
-            <span class="skill-badge">C++</span>
-            <span class="skill-badge">ReactJS</span>
-            <span class="skill-badge">Tailwind CSS</span>
-            <span class="skill-badge">HTML5</span>
-            <span class="skill-badge">CSS3</span>
-            <span class="skill-badge">MySQL</span>
-            <span class="skill-badge">PostgreSQL</span>
-            <span class="skill-badge">FastAPI</span>
-            <span class="skill-badge">Flask</span>
-            <span class="skill-badge">Django</span>
-            <span class="skill-badge">PHP</span>
-            <span class="skill-badge">Figma</span>
-            <span class="skill-badge">Git</span>
-            <span class="skill-badge">Power BI</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PROJECTS ===== -->
-  <section id="projects" class="section-padding bg-section">
-    <div class="container">
-      <h2 class="section-title text-center mb-5">Projects</h2>
-      <div class="row g-4">
-
-        <!-- Mental Health Companion -->
-        <div class="col-md-6 col-lg-4">
-          <div class="project-card h-100 p-4 rounded-4">
-            <div class="project-icon mb-3"><i class="bi bi-heart-pulse-fill"></i></div>
-            <h5 class="fw-bold mb-2">Mental Health Companion</h5>
-            <p class="small mb-3">Full-stack platform connecting patients with therapists.</p>
-            <ul class="project-list small">
-              <li>JWT role-based auth</li>
-              <li>OTP onboarding</li>
-              <li>Appointments &amp; reminders</li>
-              <li>Real-time chat</li>
-              <li>Blogs &amp; journals</li>
-              <li>Find therapists by location</li>
-            </ul>
-            <p class="mt-2 mb-0 small text-muted"><em>Figma, React.js, FastAPI, PostgreSQL</em></p>
-          </div>
-        </div>
-
-        <!-- Gym Management -->
-        <div class="col-md-6 col-lg-4">
-          <div class="project-card h-100 p-4 rounded-4">
-            <div class="project-icon mb-3"><i class="bi bi-dumbbell-fill"></i></div>
-            <h5 class="fw-bold mb-2">Gym Management System</h5>
-            <p class="small mb-3">Platform to manage gym operations efficiently.</p>
-            <ul class="project-list small">
-              <li>User login for members</li>
-              <li>Admin dashboard</li>
-              <li>Trainer appointments</li>
-              <li>Exercise categories</li>
-              <li>Dummy payment flow</li>
-            </ul>
-            <p class="mt-2 mb-0 small text-muted"><em>HTML, CSS, JS, PHP, MySQL</em></p>
-          </div>
-        </div>
-
-        <!-- Hospital Management -->
-        <div class="col-md-6 col-lg-4">
-          <div class="project-card h-100 p-4 rounded-4">
-            <div class="project-icon mb-3"><i class="bi bi-hospital-fill"></i></div>
-            <h5 class="fw-bold mb-2">Hospital Management</h5>
-            <p class="small mb-3">Organized and accessible hospital services.</p>
-            <ul class="project-list small">
-              <li>Patient login &amp; profile</li>
-              <li>Appointment booking</li>
-              <li>Blood donation registration</li>
-              <li>Organ donation registration</li>
-              <li>Patient records &amp; history</li>
-            </ul>
-            <p class="mt-2 mb-0 small text-muted"><em>PHP, JavaScript, MySQL</em></p>
-          </div>
-        </div>
-
-        <!-- Book Management -->
-        <div class="col-md-6 col-lg-4">
-          <div class="project-card h-100 p-4 rounded-4">
-            <div class="project-icon mb-3"><i class="bi bi-book-fill"></i></div>
-            <h5 class="fw-bold mb-2">Book Management System</h5>
-            <p class="small mb-3">Manage a personal book library.</p>
-            <ul class="project-list small">
-              <li>Add, edit, delete books</li>
-              <li>Search &amp; filter by author/genre</li>
-              <li>PostgreSQL persistence</li>
-              <li>Responsive UI</li>
-            </ul>
-            <p class="mt-2 mb-0 small text-muted"><em>FastAPI, HTML, Tailwind CSS, PostgreSQL</em></p>
-          </div>
-        </div>
-
-        <!-- ChitChat Chat Application -->
-        <div class="col-md-6 col-lg-4">
-          <div class="project-card h-100 p-4 rounded-4">
-            <div class="project-icon mb-3"><i class="bi bi-chat-dots-fill"></i></div>
-            <h5 class="fw-bold mb-2">ChitChat Chat Application</h5>
-            <p class="small mb-3">Real-time Android chat app built with Java &amp; Firebase.</p>
-            <ul class="project-list small">
-              <li>User registration &amp; login</li>
-              <li>Real-time messaging</li>
-              <li>Conversation management</li>
-              <li>Firebase Authentication</li>
-              <li>Secure user access</li>
-              <li>Simple, user-friendly interface</li>
-            </ul>
-            <p class="mt-2 mb-0 small text-muted"><em>Java, Firebase, Android SDK</em></p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== EDUCATION ===== -->
-  <section id="education" class="section-padding">
-    <div class="container">
-      <h2 class="section-title text-center mb-5">Education</h2>
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="edu-card p-4 p-md-5 rounded-4 mb-4">
-            <div class="d-flex align-items-start gap-3 mb-4">
-              <div class="edu-icon"><i class="bi bi-mortarboard-fill"></i></div>
-              <div>
-                <h5 class="fw-bold mb-1">BCA – Mahatma Gandhi Memorial College, Udupi</h5>
-                <p class="text-muted mb-0">Completed 2024 &nbsp;|&nbsp; <strong>CGPA: 9.2/10</strong></p>
-              </div>
-            </div>
-            <div class="d-flex align-items-start gap-3">
-              <div class="edu-icon"><i class="bi bi-mortarboard-fill"></i></div>
-              <div>
-                <h5 class="fw-bold mb-1">MCA – Manipal Institute of Technology, Manipal</h5>
-                <p class="text-muted mb-0">Completed 2026 &nbsp;|&nbsp; <strong>CGPA: 7.75/10</strong></p>
-              </div>
-            </div>
-          </div>
-
-          <h3 class="text-center fw-bold mb-4" style="color: var(--accent);">Certifications</h3>
-          <div class="cert-grid">
-            <div class="cert-item d-flex justify-content-between align-items-center p-3 rounded-3">
-              <span>Excel Power Tools for Data Analysis – Coursera</span>
-              <button class="btn btn-sm btn-outline-accent" onclick="openModal('Abhishek_shetty_240970083.pdf')">View</button>
-            </div>
-            <div class="cert-item d-flex justify-content-between align-items-center p-3 rounded-3">
-              <span>Introduction to Mobile Development – Coursera</span>
-              <button class="btn btn-sm btn-outline-accent" onclick="openModal('intro to mobile development.pdf')">View</button>
-            </div>
-            <div class="cert-item d-flex justify-content-between align-items-center p-3 rounded-3">
-              <span>Harnessing the Power of Data with Power BI – Coursera</span>
-              <button class="btn btn-sm btn-outline-accent" onclick="openModal('power bi2.pdf')">View</button>
-            </div>
-            <div class="cert-item d-flex justify-content-between align-items-center p-3 rounded-3">
-              <span>Programming for Everybody (Python) – Coursera</span>
-              <button class="btn btn-sm btn-outline-accent" onclick="openModal('programming for everybody.pdf')">View</button>
-            </div>
-            <div class="cert-item d-flex justify-content-between align-items-center p-3 rounded-3">
-              <span>Programming with JavaScript – Coursera</span>
-              <button class="btn btn-sm btn-outline-accent" onclick="openModal('programming with javascript.pdf')">View</button>
-            </div>
-            <div class="cert-item d-flex justify-content-between align-items-center p-3 rounded-3">
-              <span>Python Data Structures – Coursera</span>
-              <button class="btn btn-sm btn-outline-accent" onclick="openModal('python data structures.pdf')">View</button>
-            </div>
-            <div class="cert-item d-flex justify-content-between align-items-center p-3 rounded-3">
-              <span>Capstone: Data with Python – Coursera</span>
-              <button class="btn btn-sm btn-outline-accent" onclick="openModal('python.pdf')">View</button>
-            </div>
-            <div class="cert-item d-flex justify-content-between align-items-center p-3 rounded-3">
-              <span>Software Engineer Intern – Blugate Software Technologies</span>
-              <button class="btn btn-sm btn-outline-accent" onclick="openBlugateModal()">View</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== INTERNSHIP ===== -->
-  <section id="internship" class="section-padding bg-section">
-    <div class="container">
-      <h2 class="section-title text-center mb-5">Internship</h2>
-      <div class="row justify-content-center g-4">
-
-        <div class="col-md-6">
-          <div class="intern-card h-100 p-4 p-md-5 rounded-4">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <div class="intern-icon"><i class="bi bi-building"></i></div>
-              <h5 class="fw-bold mb-0">Software Engineer Intern – Optimum Codes</h5>
-            </div>
-            <p class="mb-2">June 02, 2025 – August 02, 2025</p>
-            <p class="mb-3">Worked on PostgreSQL for databases, Python FastAPI for API endpoints, and React.js + Tailwind CSS for frontend, with UI design in Figma.</p>
-            <button class="btn btn-accent" onclick="openInternshipModal()"><i class="bi bi-file-earmark-pdf me-2"></i>View Certificate</button>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="intern-card h-100 p-4 p-md-5 rounded-4">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <div class="intern-icon"><i class="bi bi-building"></i></div>
-              <h5 class="fw-bold mb-0">Software Engineer Intern – Blugate Software Technologies Pvt. Ltd.</h5>
-            </div>
-            <p class="mb-2">January 02, 2026 – April 30, 2026</p>
-            <p class="mb-3">Full-stack web development using Flask, Django, PostgreSQL, HTML, CSS, JavaScript, and REST APIs. Collaborated with the development team to build scalable applications.</p>
-            <button class="btn btn-accent" onclick="openBlugateModal()"><i class="bi bi-file-earmark-pdf me-2"></i>View Certificate</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CONTACT ===== -->
-  <section id="contact" class="section-padding">
-    <div class="container">
-      <h2 class="section-title text-center mb-5">Get In Touch</h2>
-      <div class="row justify-content-center">
-        <div class="col-lg-6">
-          <div class="contact-card p-4 p-md-5 rounded-4">
-            <form method="POST" id="form">
-              <input type="hidden" name="access_key" value="861ac1d9-b2f0-44a8-8434-d5ee4d70908a">
-              <div class="mb-3">
-                <label for="name" class="form-label fw-semibold">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label fw-semibold">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" required>
-              </div>
-              <div class="mb-3">
-                <label for="message" class="form-label fw-semibold">Message</label>
-                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
-              </div>
-              <input type="checkbox" name="botcheck" class="d-none">
-              <button type="submit" class="btn btn-accent w-100 py-2 fw-semibold">Send Message</button>
-              <div id="result" class="mt-3 text-center small fw-semibold"></div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CERTIFICATE PDF MODAL (Education) ===== -->
-  <div class="modal fade" id="pdfModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-      <div class="modal-content border-0">
-        <div class="modal-header border-0 pb-0">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body pt-2">
-          <iframe id="pdfFrame" src="" width="100%" height="550px" style="border:none;border-radius:8px;" title="Certificate PDF"></iframe>
-        </div>
-        <div class="modal-footer border-0 justify-content-center pt-0">
-          <button type="button" class="btn btn-accent" data-bs-dismiss="modal"><i class="bi bi-x-circle me-2"></i>Close PDF</button>
+        <div class="btns"><a class="btn p" href="#projects">View projects</a><a class="btn s" href="#contact">Contact me</a></div>
+        <div class="soc">
+          <a href="mailto:aabhishekshetty7@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+          <a href="https://github.com/Abhishek-shetty-16" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
+          <a href="https://www.linkedin.com/in/abhishek-shetty-0a58382a3/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- ===== OPTIMUM CODES INTERNSHIP MODAL ===== -->
-  <div class="modal fade" id="certificateModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-      <div class="modal-content border-0">
-        <div class="modal-header border-0 pb-0">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body pt-2">
-          <div id="previewView" class="text-center">
-            <img src="completionLetter_preview.jpg" alt="Certificate Preview" class="img-fluid rounded-3 mb-3" style="max-height:500px;">
-            <div class="text-center">
-              <button class="btn btn-accent" onclick="showInternshipPDF()"><i class="bi bi-file-earmark-pdf me-2"></i>View Full PDF</button>
-            </div>
-          </div>
-          <div id="pdfView" class="text-center" style="display:none;">
-            <iframe src="completionLetter_Abishek.pdf" width="100%" height="550px" style="border:none;border-radius:8px;" title="Internship Certificate PDF"></iframe>
-          </div>
-        </div>
-        <div class="modal-footer border-0 justify-content-center pt-0">
-          <button type="button" class="btn btn-accent" data-bs-dismiss="modal"><i class="bi bi-x-circle me-2"></i>Close Certificate</button>
-        </div>
-      </div>
-    </div>
+<!-- ABOUT -->
+<div class="cell" id="about"><div class="gut"></div><div class="box two">
+  <div>
+    <div class="cm"># about</div><h2>About me</h2>
+    <p>I'm an MCA graduate and aspiring Data Analyst with hands-on experience in Python, Pandas, NumPy, SQL and exploratory data analysis. I clean and preprocess messy datasets, run statistical analysis, and turn the results into charts and business insights.</p>
+    <p>I'm also an aspiring software engineer and Python developer with a backend focus: I've built RESTful APIs with Flask and FastAPI, integrated Jira REST APIs, and managed data in PostgreSQL. I work comfortably in Agile/Scrum teams and have solid foundations in OOP and data structures.</p>
   </div>
-
-  <!-- ===== BLUGATE INTERNSHIP MODAL ===== -->
-  <div class="modal fade" id="blugateModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-      <div class="modal-content border-0">
-        <div class="modal-header border-0 pb-0">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body pt-2">
-          <div id="blugatePreviewView" class="text-center">
-            <img src="blugate_internship.png" alt="Blugate Certificate Preview" class="img-fluid rounded-3 mb-3" style="max-height:500px;">
-            <div class="text-center">
-              <button class="btn btn-accent" onclick="showBlugatePDF()"><i class="bi bi-file-earmark-pdf me-2"></i>View Full PDF</button>
-            </div>
-          </div>
-          <div id="blugatePdfView" class="text-center" style="display:none;">
-            <iframe src="blugate_internship.pdf" width="100%" height="550px" style="border:none;border-radius:8px;" title="Blugate Internship Certificate PDF"></iframe>
-          </div>
-        </div>
-        <div class="modal-footer border-0 justify-content-center pt-0">
-          <button type="button" class="btn btn-accent" data-bs-dismiss="modal"><i class="bi bi-x-circle me-2"></i>Close Certificate</button>
-        </div>
-      </div>
-    </div>
+  <div class="cnt">
+    <div><b data-n="7" id="cProj">0</b><span>Total projects (data + software)</span></div>
+    <div><b data-n="2">0</b><span>Internships</span></div>
+    <div><b data-n="9.2" data-d="1">0</b><span>BCA CGPA</span></div>
+    <div><b data-n="7" id="cLang">0</b><span>Programming languages</span></div>
   </div>
+</div></div>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer-section text-center py-4">
-    <div class="container">
-      <p class="mb-0 small">&copy; <span id="year"></span> Abhishek Shetty. All rights reserved.</p>
-    </div>
-  </footer>
+<!-- SKILLS -->
+<div class="cell" id="skills"><div class="gut"></div><div class="box">
+  <div class="cm"># skills</div><h2>Skills</h2>
+  <div class="sg" id="sg"></div>
+</div></div>
 
-  <!-- ===== BACKGROUND TOGGLE BUTTON ===== -->
-  <button class="bg-toggle" id="bgToggle" title="Toggle Background Animation">
-    <i class="bi bi-joystick"></i>
-  </button>
+<!-- PROJECTS: DATA -->
+<div class="cell" id="projects"><div class="gut"></div><div class="box proj">
+  <div>
+    <span class="tag">DATA ANALYSIS</span>
+    <h3>Blinkit Sales Analysis</h3>
+    <p>Exploratory analysis of Blinkit sales data covering performance, customer ratings and outlet distribution.</p>
+    <ul>
+      <li>Cleaned the data in Pandas: missing values, duplicates and inconsistent categories</li>
+      <li>Tracked Total Sales, Average Sales, Number of Items and Average Rating</li>
+      <li>Compared sales by item type, fat content, outlet size, location and establishment year</li>
+      <li>Visualised trends and outlet-level insights with Matplotlib and Seaborn</li>
+    </ul>
+    <div class="chips" data-chips="Python,Pandas,NumPy,Matplotlib,Seaborn,Google Colab"></div>
+  </div>
+  <div class="viz">
+    <small>sales_by_fat_content</small>
+    <svg viewBox="0 0 300 90" id="b1" role="img" aria-label="Bar chart comparing sales for Low Fat and Regular items"></svg>
+    <small>sales_by_outlet_size</small>
+    <svg viewBox="0 0 300 70" id="b2" role="img" aria-label="Donut-style bars for Small, Medium and High outlet sizes"></svg>
+  </div>
+</div></div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<div class="cell"><div class="gut"></div><div class="box proj">
+  <div>
+    <span class="tag">DATA ANALYSIS</span>
+    <h3>IPL Data Analysis</h3>
+    <p>Exploratory analysis of IPL datasets to understand team performance, player statistics and match outcomes.</p>
+    <ul>
+      <li>Cleaned datasets with Pandas and NumPy</li>
+      <li>Analysed runs, wickets, strike rates, economy rates and match results</li>
+      <li>Visualised batting, bowling and team-wise trends</li>
+      <li>Identified top performers, successful teams and match-winning patterns</li>
+    </ul>
+    <div class="chips" data-chips="Python,Pandas,NumPy,Matplotlib,Seaborn,Google Colab"></div>
+  </div>
+  <div class="viz">
+    <small>team_performance_trend</small>
+    <svg viewBox="0 0 300 110" id="l1" role="img" aria-label="Line chart of team performance trend across seasons"></svg>
+    <small>top_players</small>
+    <svg viewBox="0 0 300 80" id="b3" role="img" aria-label="Bar chart ranking top players"></svg>
+  </div>
+</div></div>
 
-  <script>
-  // ---- Education Certificate Modal (Bootstrap) ----
-  const eduModal = new bootstrap.Modal(document.getElementById('pdfModal'));
-  function openModal(pdfFile) {
-    document.getElementById('pdfFrame').src = pdfFile;
-    eduModal.show();
-  }
-  document.getElementById('pdfModal').addEventListener('hidden.bs.modal', function () {
-    document.getElementById('pdfFrame').src = "";
-  });
+<!-- PROJECTS: DEV -->
+<div class="cell"><div class="gut"></div><div class="box">
+  <span class="tag dev">SOFTWARE ENGINEERING</span>
+  <h2>Applications I've built</h2>
+  <div class="mini" id="mini"></div>
+</div></div>
 
-  // ---- Optimum Codes Internship Modal (Bootstrap) ----
-  const optimumModal = new bootstrap.Modal(document.getElementById('certificateModal'));
-  function openInternshipModal() {
-    document.getElementById('previewView').style.display = "block";
-    document.getElementById('pdfView').style.display = "none";
-    optimumModal.show();
-  }
-  function showInternshipPDF() {
-    document.getElementById('previewView').style.display = "none";
-    document.getElementById('pdfView').style.display = "block";
-  }
-  document.getElementById('certificateModal').addEventListener('hidden.bs.modal', function () {
-    document.getElementById('previewView').style.display = "block";
-    document.getElementById('pdfView').style.display = "none";
-  });
+<!-- EXPERIENCE -->
+<div class="cell" id="experience"><div class="gut"></div><div class="box">
+  <div class="cm"># experience</div><h2>Experience</h2>
+  <div class="tl">
+    <article><h3>Software Engineer Intern, Blugate Software Technologies</h3><time>JAN 2026 – APR 2026 · BENGALURU</time>
+      <p>Built and maintained RESTful APIs with Flask, integrating Jira REST APIs to retrieve and process project and issue-tracking data. Worked with PostgreSQL, contributed to Django frontend work, and took part in Scrum sprint planning and retrospectives, using GitHub for code review.</p>
+      <button class="link" data-doc="blugate_internship.pdf" data-prev="blugate_internship.png">View certificate</button></article>
+    <article><h3>Software Engineer Intern, Optimum Codes</h3><time>JUN 2025 – AUG 2025</time>
+      <p>PostgreSQL databases, FastAPI endpoints, and a React.js + Tailwind CSS frontend, with UI design in Figma.</p>
+      <button class="link" data-doc="completionLetter_Abishek.pdf" data-prev="completionLetter_preview.jpg">View certificate</button></article>
+  </div>
+</div></div>
 
-  // ---- Blugate Internship Modal (Bootstrap) ----
-  const blugateModal = new bootstrap.Modal(document.getElementById('blugateModal'));
-  function openBlugateModal() {
-    document.getElementById('blugatePreviewView').style.display = "block";
-    document.getElementById('blugatePdfView').style.display = "none";
-    blugateModal.show();
-  }
-  function showBlugatePDF() {
-    document.getElementById('blugatePreviewView').style.display = "none";
-    document.getElementById('blugatePdfView').style.display = "block";
-  }
-  document.getElementById('blugateModal').addEventListener('hidden.bs.modal', function () {
-    document.getElementById('blugatePreviewView').style.display = "block";
-    document.getElementById('blugatePdfView').style.display = "none";
-  });
+<!-- EDUCATION -->
+<div class="cell" id="education"><div class="gut"></div><div class="box">
+  <div class="cm"># education</div><h2>Education & certifications</h2>
+  <div class="tl">
+    <article><h3>MCA, Manipal Institute of Technology, Manipal</h3><time>2024 – 2026 · CGPA 7.75</time></article>
+    <article><h3>BCA, Mahatma Gandhi Memorial College, Udupi</h3><time>2021 – 2024 · CGPA 9.2</time></article>
+  </div>
+  <div class="certs" id="certs"></div>
+</div></div>
 
-  // ---- Contact Form (Web3Forms) ----
-  const form = document.getElementById('form');
-  const result = document.getElementById('result');
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = new FormData(form);
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
-    result.style.display = "block";
-    result.innerHTML = "Please wait...";
-    result.style.color = "#6c757d";
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: json
-    })
-    .then(async (response) => {
-      let json = await response.json();
-      if (response.status == 200) {
-        result.style.color = "#198754";
-        result.innerHTML = "✅ Form submitted successfully!";
-      } else {
-        result.style.color = "#dc3545";
-        result.innerHTML = json.message;
-      }
-    })
-    .catch(() => {
-      result.style.color = "#dc3545";
-      result.innerHTML = "❌ Something went wrong!";
-    })
-    .then(() => {
-      form.reset();
-      setTimeout(() => { result.style.display = "none"; }, 3000);
-    });
-  });
+<!-- CONTACT -->
+<div class="cell" id="contact"><div class="gut"></div><div class="box" style="max-width:560px">
+  <div class="cm"># contact</div><h2>Get in touch</h2>
+  <form id="form" method="POST">
+    <input type="hidden" name="access_key" value="861ac1d9-b2f0-44a8-8434-d5ee4d70908a">
+    <label for="name">Name</label><input id="name" name="name" required>
+    <label for="email">Email</label><input id="email" name="email" type="email" required>
+    <label for="message">Message</label><textarea id="message" name="message" rows="5" required></textarea>
+    <input type="checkbox" name="botcheck" hidden>
+    <button class="btn p" type="submit" style="width:100%;justify-content:center">Send message</button>
+    <div id="result" role="status"></div>
+  </form>
+</div></div>
+</main>
+<footer>&copy; <span id="year"></span> Abhishek Shetty · Bengaluru</footer>
 
-  // ---- Dynamic footer year ----
-  document.getElementById('year').textContent = new Date().getFullYear();
+<dialog id="dlg"><header><b>Certificate</b><button class="link" id="dclose">Close</button></header><div id="dbody"></div></dialog>
 
-  // ---- Smooth scroll for nav links ----
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-      // Close mobile menu
-      const navCollapse = document.getElementById('navMenu');
-      const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
-      if (bsCollapse) bsCollapse.hide();
-    });
-  });
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+/* data */
+const skills=[
+["languages",["Python","SQL","Java","C","C++","JavaScript","PHP"]],
+["data_analysis",["Pandas","NumPy","EDA","Data Cleaning","Preprocessing","Statistical Analysis","Data Visualization","Matplotlib","Seaborn","Power BI","Excel Power Tools"]],
+["web_and_apis",["React.js","FastAPI","Flask","Django","Laravel","REST APIs","HTML5","CSS3","Bootstrap","Tailwind CSS"]],
+["databases",["PostgreSQL","MySQL","Firebase Realtime DB"]],
+["tools",["Jupyter Notebook","Google Colab","Git","GitHub","Jira","VS Code","Android Studio","Figma"]],
+["concepts",["OOP","Data Structures & Algorithms","Agile/Scrum","UI/UX Design","Version Control"]]];
+$("#sg").innerHTML=skills.map(([t,l])=>`<div><h3>${t} = [</h3><div class="chips" data-chips="${l.join("|")}" data-sep="|"></div></div>`).join("");
+$$("[data-chips]").forEach(c=>{const l=c.dataset.chips.split(c.dataset.sep||",");c.innerHTML=l.map((x,i)=>`<span style="transition-delay:${i*55}ms">${x}</span>`).join("")});
+const apps=[
+["bi-book-fill","Book Management System","Full-stack CRUD app with JWT auth and admin/user roles.",["Paginated, filterable FastAPI REST APIs","React.js UI with reusable components and validation","Layered backend: routes, schemas, models"],"Python,FastAPI,React.js,PostgreSQL"],
+["bi-chat-dots-fill","Real-Time Chat App","Android chat app with instant message sync.",["Online/offline presence and timestamps","Scalable Firebase data model for many threads","Material Design UI in Java"],"Java,Firebase Realtime DB"],
+["bi-activity","Gym Management System","Admin dashboard for members, trainers and subscriptions.",["PHP CRUD with server-side validation","Dynamic dashboard for active memberships and renewals"],"HTML,CSS,PHP,JavaScript,MySQL"],
+["bi-heart-pulse-fill","Mental Health Companion","Platform connecting patients with therapists.",["JWT role-based auth and OTP onboarding","Real-time chat, appointments and reminders","Find therapists by location"],"Figma,React.js,FastAPI,PostgreSQL"],
+["bi-hospital-fill","Hospital Management","Organised hospital services for patients.",["Patient profiles, records and history","Appointment booking","Blood and organ donation registration"],"PHP,JavaScript,MySQL"]];
+$("#mini").innerHTML=apps.map(a=>`<div><i class="bi ${a[0]} ic"></i><h3>${a[1]}</h3><p style="margin:0 0 8px;font-size:.92rem">${a[2]}</p><ul>${a[3].map(x=>`<li>${x}</li>`).join("")}</ul><div class="chips" data-chips="${a[4]}"></div></div>`).join("");
+$("#cProj").dataset.n=apps.length+2;$("#cLang").dataset.n=skills[0][1].length;
+$$("#mini [data-chips]").forEach(c=>c.innerHTML=c.dataset.chips.split(",").map((x,i)=>`<span style="transition-delay:${i*60}ms">${x}</span>`).join(""));
+const certs=[["Excel Power Tools for Data Analysis","Abhishek_shetty_240970083.pdf"],["Power BI, Harnessing the Power of Data","power bi2.pdf"],["Programming for Everybody (Python)","programming for everybody.pdf"],["Python Data Structures","python data structures.pdf"],["Capstone: Data with Python","python.pdf"],["Programming with JavaScript","programming with javascript.pdf"],["Introduction to Mobile Development","intro to mobile development.pdf"],["React Basics"],["Responsive Web Design (freeCodeCamp)"],["Java GUI"]];
+$("#certs").innerHTML=certs.map(c=>`<div><span>${c[0]}</span>${c[1]?`<button class="link" data-doc="${c[1]}">View</button>`:""}</div>`).join("");
 
-  // ---- Scroll to reveal sections ----
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.section-padding').forEach(s => observer.observe(s));
+/* chart helpers: bars use CSS vars, delays stagger */
+const bars=(id,vals,labels,h)=>{const n=vals.length,w=300/n;$(id).innerHTML=vals.map((v,i)=>`<rect class="bar" style="transition-delay:${i*110}ms" x="${i*w+w*.18}" y="${h-18-v}" width="${w*.64}" height="${v}" rx="4"/><text x="${i*w+w/2}" y="${h-4}" text-anchor="middle" font-size="10" fill="var(--muted)">${labels[i]}</text>`).join("")};
+bars("#b1",[62,48],["Low Fat","Regular"],90);
+bars("#b3",[56,44,36,28,20],["P1","P2","P3","P4","P5"],80);
+(function(){const sz=[["Small",30,"var(--blue)"],["Medium",45,"var(--orange)"],["High",25,"var(--green)"]];let off=0;
+$("#b2").innerHTML=`<g transform="translate(35,35) rotate(-90)">${sz.map(([n,v,c])=>{const s=`<circle class="arc" r="15.9" cx="0" cy="0" stroke="${c}" data-v="${v}" style="stroke-dashoffset:${-off};transform:scale(2)" pathLength="100"/>`;off+=v;return s}).join("")}</g>`+sz.map((s,i)=>`<circle cx="95" cy="${14+i*20}" r="5" fill="${s[2]}"/><text x="108" y="${18+i*20}" font-size="11" fill="var(--muted)">${s[0]}</text>`).join("");
+const pts=[30,45,38,62,55,80,72,95].map((v,i)=>`${i?"L":"M"}${10+i*40},${100-v}`).join(" ");
+$("#l1").innerHTML=[25,50,75].map(y=>`<line x1="0" x2="300" y1="${y}" y2="${y}" stroke="var(--line)"/>`).join("")+`<path class="ln" pathLength="1" d="${pts}"/>`})();
+document.addEventListener("transitionend",()=>{},{once:true});
 
-  // ==========================================================
-  // ===== GAMER BACKGROUND ANIMATION ENGINE =====
-  // ==========================================================
-  (function() {
-    const canvas = document.getElementById('bgCanvas');
-    const toggleBtn = document.getElementById('bgToggle');
-    const ctx = canvas.getContext('2d');
-    let animId = null;
-    let paused = false;
+/* hero typing */
+const code=[["import ","kw","pandas as pd","",],];
+const lines=`<span class="kw">import</span> pandas <span class="kw">as</span> pd\n\nme = pd.Series({\n    <span class="st">"name"</span>: <span class="st">"Abhishek Shetty"</span>,\n    <span class="st">"role"</span>: <span class="st">"Aspiring Data Analyst, Software Engineer &amp; Python Developer"</span>\n})\nme`;
+(function(){const src=$("#src"),out=$("#out"),plain=lines.replace(/<[^>]+>/g,"").replace(/&amp;/g,"&");
+ if(matchMedia("(prefers-reduced-motion:reduce)").matches){src.innerHTML=lines;out.classList.add("show");return}
+ let i=0;const map=[];let tag=false,html="";/* type char by char while preserving markup */
+ const tokens=lines.match(/<[^>]+>|&amp;|[\s\S]/g);let t=0,buf="";
+ const tick=()=>{if(t>=tokens.length){src.innerHTML=buf;out.classList.add("show");return}
+  do{buf+=tokens[t++]}while(t<tokens.length&&(tokens[t-1][0]==="<"||tokens[t]?.[0]==="<"));
+  src.innerHTML=buf+'<span class="caret"></span>';setTimeout(tick,22)};
+ setTimeout(tick,3300)})();
 
-    // ---- Resize canvas ----
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
+/* cells: run indicator, reveal, counters */
+let exec=1;
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);const c=e.target,g=c.querySelector(".gut");
+ if(c.dataset.fixed){c.classList.add("in");return}
+ c.classList.add("in");g.classList.add("run");g.innerHTML="In&nbsp;[";
+ setTimeout(()=>{g.classList.remove("run");g.innerHTML="In&nbsp;["+(++exec)+"]:"},650);
+ c.querySelectorAll("[data-n]").forEach(el=>{const to=+el.dataset.n,d=+el.dataset.d||0,t0=performance.now();
+  const f=t=>{const p=Math.min((t-t0)/1200,1);el.textContent=(to*(1-Math.pow(1-p,3))).toFixed(d);if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)});
+ c.querySelectorAll(".arc").forEach(a=>setTimeout(()=>a.style.strokeDasharray=`${a.dataset.v-1.5} 100`,300));
+}),{threshold:.15});
+$$(".cell").forEach(c=>io.observe(c));
 
-    // ---- 1. Floating Particles (Hexagons & Dots) ----
-    const particles = [];
-    const PARTICLE_COUNT = 60;
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1.5;
-        this.speedX = (Math.random() - 0.5) * 0.4;
-        this.speedY = (Math.random() - 0.5) * 0.4;
-        this.opacity = Math.random() * 0.5 + 0.2;
-        this.shape = Math.random() > 0.6 ? 'hex' : 'circle';
-        this.pulse = Math.random() * Math.PI * 2;
-        this.pulseSpeed = Math.random() * 0.02 + 0.01;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        this.pulse += this.pulseSpeed;
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-      }
-      draw() {
-        const alpha = this.opacity * (0.7 + 0.3 * Math.sin(this.pulse));
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.globalAlpha = alpha;
-        ctx.fillStyle = '#64ffda';
-        if (this.shape === 'hex') {
-          // Draw hexagon
-          ctx.beginPath();
-          for (let i = 0; i < 6; i++) {
-            const angle = (Math.PI / 3) * i - Math.PI / 6;
-            const r = this.size * 1.8;
-            const px = Math.cos(angle) * r;
-            const py = Math.sin(angle) * r;
-            i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
-          }
-          ctx.closePath();
-          ctx.fill();
-        } else {
-          ctx.beginPath();
-          ctx.arc(0, 0, this.size, 0, Math.PI * 2);
-          ctx.fill();
-        }
-        ctx.restore();
-      }
-    }
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      particles.push(new Particle());
-    }
+/* progress bar */
+addEventListener("scroll",()=>{const h=document.documentElement;$("#progress").style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+"%"},{passive:true});
+/* active nav */
+const sec=$$("main .cell[id]"),links=$$("nav ul a"),ch={about:"I · About",skills:"II · Skills",projects:"III · Projects",experience:"IV · Experience",education:"V · Education",contact:"VI · Contact"};
+addEventListener("scroll",()=>{let cur="";sec.forEach(s=>{if(s.getBoundingClientRect().top<160)cur=s.id});links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+cur));const sb=$("#sub");sb.textContent=ch[cur]?"Chapter "+ch[cur]:"";sb.style.opacity=ch[cur]?1:0},{passive:true});
 
-    // ---- 3. Neon Grid Lines ----
-    const gridSpacing = 80;
-    let gridOffset = 0;
-
-    function drawGrid() {
-      ctx.strokeStyle = 'rgba(100, 255, 218, 0.04)';
-      ctx.lineWidth = 1;
-      gridOffset = (gridOffset + 0.15) % gridSpacing;
-      // Vertical lines
-      for (let x = gridOffset; x < canvas.width; x += gridSpacing) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, canvas.height);
-        ctx.stroke();
-      }
-      // Horizontal lines
-      for (let y = gridOffset; y < canvas.height; y += gridSpacing) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(canvas.width, y);
-        ctx.stroke();
-      }
-    }
-
-    // ---- 4. Glow Pulse Waves ----
-    let pulseTime = 0;
-    const pulseWaves = [];
-
-    function createPulseWave() {
-      if (Math.random() > 0.005) return;
-      pulseWaves.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: 10,
-        maxRadius: Math.max(canvas.width, canvas.height) * 0.5,
-        opacity: 0.15,
-        growth: 1.5
-      });
-    }
-
-    function drawPulseWaves() {
-      for (let i = pulseWaves.length - 1; i >= 0; i--) {
-        const w = pulseWaves[i];
-        w.radius += w.growth;
-        w.opacity *= 0.985;
-        ctx.beginPath();
-        ctx.arc(w.x, w.y, w.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(100, 255, 218, ${w.opacity})`;
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
-        if (w.opacity < 0.005 || w.radius > w.maxRadius) {
-          pulseWaves.splice(i, 1);
-        }
-      }
-    }
-
-    // ---- Main Animation Loop ----
-    function animate() {
-      // Clear with dark overlay for trail effect
-      ctx.fillStyle = 'rgba(10, 25, 47, 0.15)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      drawGrid();
-      createPulseWave();
-      drawPulseWaves();
-      // Draw particles
-      for (const p of particles) {
-        p.update();
-        p.draw();
-      }
-      // Draw connecting lines between nearby particles
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 140) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(100, 255, 218, ${0.06 * (1 - dist / 140)})`;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-          }
-        }
-      }
-
-      animId = requestAnimationFrame(animate);
-    }
-
-    // ---- Toggle ----
-    function toggleBg() {
-      paused = !paused;
-      canvas.classList.toggle('paused', paused);
-      toggleBtn.innerHTML = paused ? '<i class="bi bi-joystick"></i>' : '<i class="bi bi-joystick"></i>';
-      toggleBtn.style.opacity = paused ? '0.5' : '1';
-      if (paused) {
-        if (animId) {
-          cancelAnimationFrame(animId);
-          animId = null;
-        }
-        // Pause state - show subtle static
-        ctx.fillStyle = 'rgba(10, 25, 47, 0.95)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      } else {
-        animate();
-      }
-    }
-
-    toggleBtn.addEventListener('click', toggleBg);
-
-    // ---- Start animation ----
-    animate();
-
-  })();
-  </script>
+/* dialog */
+const dlg=$("#dlg"),body=$("#dbody");
+document.addEventListener("click",e=>{const b=e.target.closest("[data-doc]");if(!b)return;const pdf=b.dataset.doc,prev=b.dataset.prev;
+ body.innerHTML=prev?`<div style="padding:16px;text-align:center"><img src="${prev}" alt="Certificate preview"><p><button class="link" id="full">View full PDF</button></p></div>`:`<iframe src="${pdf}" title="Certificate PDF"></iframe>`;
+ if(prev)$("#full").onclick=()=>body.innerHTML=`<iframe src="${pdf}" title="Certificate PDF"></iframe>`;dlg.showModal()});
+$("#dclose").onclick=()=>dlg.close();dlg.addEventListener("close",()=>body.innerHTML="");dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close()});
+/* theme */
+$("#theme").onclick=()=>{const r=document.documentElement;r.dataset.theme=r.dataset.theme==="dark"?"light":"dark"};
+/* cinematic: intro curtain, cursor spotlight, parallax */
+requestAnimationFrame(()=>$("#intro").classList.add("go"));setTimeout(()=>$("#intro").remove(),4300);
+addEventListener("pointermove",e=>{const r=document.documentElement.style;r.setProperty("--mx",e.clientX+"px");r.setProperty("--my",e.clientY+"px")},{passive:true});
+if(!matchMedia("(prefers-reduced-motion:reduce)").matches)addEventListener("scroll",()=>{const y=scrollY;document.body.style.backgroundPosition="0 "+(-y*.25)+"px"},{passive:true});
+/* form */
+$("#form").addEventListener("submit",async e=>{e.preventDefault();const f=e.target,r=$("#result");r.textContent="Sending...";
+ try{const res=await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(f)))});
+ const j=await res.json();r.textContent=res.ok?"Message sent. Thank you!":j.message;if(res.ok)f.reset()}catch{r.textContent="Could not send. Please email me directly."}});
+$("#year").textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
-
